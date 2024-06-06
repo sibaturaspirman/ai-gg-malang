@@ -43,6 +43,10 @@ body {
   background-image: url(../public/bg.jpeg);
   background-size: cover;
 }
+.bg-page{
+  background-image: url(../public/bg-page.jpeg);
+  background-size: cover;
+}
 
 /* .font-paytone{
   font-family: var(--font-roboto_mono);
