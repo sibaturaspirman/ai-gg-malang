@@ -38,11 +38,11 @@ export default function Result() {
     }, [imageResultAI, linkQR])
 
     const downloadImageAI = () => {
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'CollectYourPhoto'
-        })
+        // gtag('event', 'ClickButton', {
+        //     event_category: 'Button',
+        //     event_label: 'ResultPage - '+payload.stasiunName,
+        //     event_action: 'CollectYourPhoto'
+        // })
         
         // import('html2canvas').then(html2canvas => {
         //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
@@ -181,7 +181,7 @@ export default function Result() {
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
                     <div className={`w-full`}>
                         <div className={`w-full mt-14`}>
-                            <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                                 {/* <div className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
                                     <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
                                 </div> */}
@@ -192,7 +192,7 @@ export default function Result() {
                                 trigger={() => 
                                     <div className={`w-full`}>
                                         <div className="w-full relative mx-auto flex justify-center items-center">
-                                            <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
+                                            <Image src='/btn-download.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
                                         </div>
                                     </div>
                                 }

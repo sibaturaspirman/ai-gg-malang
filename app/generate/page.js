@@ -57,11 +57,11 @@ export default function GenerateAmero() {
     const generateAI = () => {
         setNumProses1(true)
         
-        if(styleGender =='male'){
+        if(styleGender =='cowok'){
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
-        }else if(styleGender =='female'){
+        }else if(styleGender =='cewek'){
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
@@ -118,8 +118,8 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://ai-dss.antigravity.id/style/print/'+gender+'-'+number+'.jpeg'
-        // console.log(urlGambar)
+        const urlGambar = 'https://ai-gg-malang.vercel.app/style/'+gender+'.jpeg'
+        console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -218,7 +218,7 @@ export default function GenerateAmero() {
                                     id='choose_gender1'
                                     type="radio"
                                     name='choose_gender'
-                                    value="male"
+                                    value="cowok"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender1">
@@ -237,7 +237,7 @@ export default function GenerateAmero() {
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="female"
+                                    value="cewek"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender2">
@@ -277,7 +277,7 @@ export default function GenerateAmero() {
                 <div className={`fixed left-0 bottom-14 w-full`}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
-                            <Image src='/btn-suprise.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                            <Image src='/btn-generate.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
                         <Link href='' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
