@@ -18,7 +18,7 @@ export default function Register() {
 
 
     useEffect(() => {
-        document.getElementById('name').focus();
+        document.getElementById('name').focus(); 
     }, [])
 
 

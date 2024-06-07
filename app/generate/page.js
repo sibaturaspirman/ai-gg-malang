@@ -201,7 +201,7 @@ export default function GenerateAmero() {
             }
             {/* LOADING */}
             {/* PILIH STYLE */}
-            <div className={`fixed top-24 w-[60%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            <div className={`fixed top-[10rem] w-[50%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <Image src='/title-select.png' width={686} height={112} alt='Zirolu' className='w-full' priority />
             </div>
             <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>

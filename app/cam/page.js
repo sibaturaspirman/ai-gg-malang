@@ -124,7 +124,7 @@ export default function Cam() {
     }
     return (
         <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed top-24 w-[55%]'>
+            <div className='fixed top-[10rem] w-[45%]'>
                 <Image src='/title-take.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-[-12vh]">
@@ -165,7 +165,7 @@ export default function Cam() {
             <div className={`fixed left-0 bottom-14 w-full ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={generate}>
-                        <Image src='/btn-continue.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-next.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center pt-10" onClick={retake}>
                         <Image src='/btn-retake.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
