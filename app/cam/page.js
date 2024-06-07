@@ -168,7 +168,7 @@ export default function Cam() {
                         <Image src='/btn-next.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center pt-10" onClick={retake}>
-                        <Image src='/btn-retake.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-retake2.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div>
