@@ -30,7 +30,7 @@ export default function Result() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
-            const item2 = localStorage.getItem('setStyleGender')
+            const item2 = localStorage.getItem('styleGender')
             setImageResultAI(item)
             setStyleGender(item2)
         }
@@ -57,6 +57,7 @@ export default function Result() {
             let bodyFormData = new FormData();
             bodyFormData.append("name", payload.name+' - '+styleGender);
             bodyFormData.append("phone", payload.phone);
+            bodyFormData.append("type", 'ggif');
             bodyFormData.append("fromPhone", true);
             bodyFormData.append("file", blob, payload.name+'-ai-zirolu.png');
           
@@ -164,9 +165,9 @@ export default function Result() {
             </div>
             } */}
 
-            <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
+            <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full mt-[-3rem]'}>
                 {imageResultAI && 
-                <div className='relative w-[98%] mt-10 mx-auto flex justify-center items-center rounded-sm' id='capture' onClick={downloadImageAI}>
+                <div className='relative w-[98%] mx-auto flex justify-center items-center rounded-sm' id='capture' onClick={downloadImageAI}>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={1024} height={683} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
@@ -180,9 +181,9 @@ export default function Result() {
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
                     <div className={`w-full`}>
                         <div className={`w-full mt-6`}>
-                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                            <div className="relative w-[90%] mx-auto flex justify-center items-center">
                                 <button className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
-                                    <Image src='/btn-download2.png' width={632} height={105} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/btn-download.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
                                 </button>
 
 
@@ -199,13 +200,16 @@ export default function Result() {
                                 />
                                 </div>  */}
 
-                                <Link href='/generate' className="relative w-full mx-auto flex justify-center items-center pt-2">
-                                    <Image src='/btn-retake2.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                                <Link href='/generate' className="relative w-full mx-auto flex justify-center items-center pl-4">
+                                    <Image src='/btn-retake.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="fixed w-full bottom-0 left-0 mx-auto pointer-events-none">
+                <Image src='/print-your.png' width={589} height={102} alt='Zirolu' className='w-full' priority />
             </div>
         </main>
     );
