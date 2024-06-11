@@ -241,7 +241,7 @@ export default function GenerateAmero() {
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="cewek"
+                                    value="female"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender2">
@@ -260,7 +260,7 @@ export default function GenerateAmero() {
                                     id='choose_gender3'
                                     type="radio"
                                     name='choose_gender'
-                                    value="female"
+                                    value="hijab"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender3">
