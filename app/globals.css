@@ -239,6 +239,40 @@ body {
     transition: all 0.2s ease;
 }
 
+
+.choose.mod7 label{
+  padding: 0;
+}
+.choose.mod7{
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.choose.mod7 li{
+  display: block;
+  position: relative;
+  margin-right: 0;
+  width: 100%;
+  /* width: 250px; */
+}
+.choose.mod7 label{
+  padding: 0;
+}
+.choose.mod7 [type="radio"]:checked + label:after,
+.choose.mod7 [type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border: 3px solid #000;
+    position: absolute;
+    top: 13px;
+    left: 18px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
 .canvas-qr canvas{
   width: 100% !important;
   height: auto !important;

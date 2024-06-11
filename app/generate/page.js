@@ -57,11 +57,11 @@ export default function GenerateAmero() {
     const generateAI = () => {
         setNumProses1(true)
         
-        if(styleGender =='cowok'){
+        if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 5))
+                generateImageSwap(styleGender, getRandomInt(1, 2))
             }, 500);
-        }else if(styleGender =='cewek'){
+        }else if(styleGender =='female'){
             setTimeout(() => {
                 generateImageSwap(styleGender, getRandomInt(1, 5))
             }, 500);
@@ -118,7 +118,7 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/'+gender+'.jpeg'
+        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
@@ -176,15 +176,18 @@ export default function GenerateAmero() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-[70%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+            </div>
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
-                    <div className='relative w-[60%] overflow-hidden'>
+                    {/* <div className='relative w-[60%] overflow-hidden'>
                         <div className='relative w-full'>
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
-                    </div>
-                    <div className='animate-upDownCepet relative p-8 mt-14 mb-10 text-4xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg'>
+                    </div> */}
+                    <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
@@ -201,19 +204,19 @@ export default function GenerateAmero() {
             }
             {/* LOADING */}
             {/* PILIH STYLE */}
-            <div className={`fixed top-[10rem] w-[50%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+            {/* <div className={`fixed top-[10rem] w-[50%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <Image src='/title-select.png' width={686} height={112} alt='Zirolu' className='w-full' priority />
-            </div>
-            <div className={`relative w-full ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative mt-[-12vh] w-full'>
+            </div> */}
+            <div className={`relative w-full mt-6 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className='relative mt-0 w-[80%] mx-auto'>
                     <div className='relative w-full hiddenx'>
-                        <div className='relative w-[60%] mb-12 mx-auto'>
+                        <div className='relative w-[80%] mb-2 mx-auto'>
                             <Image src='/title-identity.png' width={542} height={119} alt='Zirolu' className='w-full' priority />
                         </div>
-                        <div className='w-[72%] mx-auto'>
+                        <div className='w-[80%] mx-auto'>
                             {/* GENDER FIX */}
-                            <ul className='choose mod6'>
-                                <li className='mb-10'>
+                            <ul className='choose mod7'>
+                                <li className='mb-2'>
                                     <input
                                     id='choose_gender1'
                                     type="radio"
@@ -232,7 +235,7 @@ export default function GenerateAmero() {
                                         />
                                     </label>
                                 </li>
-                                <li className='mb-10'>
+                                <li className='mb-2'>
                                     <input
                                     id='choose_gender2'
                                     type="radio"
@@ -274,7 +277,7 @@ export default function GenerateAmero() {
                         </div>
                     </div>
                 </div>
-                <div className={`fixed left-0 bottom-14 w-full`}>
+                <div className={`relative left-0 mt-6 w-full`}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-generate.png' width={830} height={192} alt='Zirolu' className='w-full' priority />

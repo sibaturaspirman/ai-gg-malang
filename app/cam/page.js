@@ -124,11 +124,11 @@ export default function Cam() {
     }
     return (
         <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0'>
+            <div className='fixed w-[70%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
-            <div className="relative w-full flex flex-col justify-center items-center mt-[-12vh]">
-                <div className='relative w-full mb-10'>
+            <div className="relative w-full flex flex-col justify-center items-center">
+                <div className='relative w-full mb-2'>
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
                         <div className='w-full animate-countdown translate-y-[35%]'>
@@ -153,7 +153,7 @@ export default function Cam() {
 
 
             {!enabled && 
-                <div className="fixed left-0 bottom-20 w-full flex justify-center items-center flex-col">
+                <div className="relative left-0 mt-4 w-full flex justify-center items-center flex-col">
                     <button className="relative mx-auto flex w-[70%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
@@ -162,12 +162,12 @@ export default function Cam() {
                     </Link>
                 </div>
             }
-            <div className={`fixed left-0 bottom-14 w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+            <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
+                <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={generate}>
                         <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
-                    <button className="relative w-full mx-auto flex justify-center items-center pt-10" onClick={retake}>
+                    <button className="relative w-full mx-auto flex justify-center items-center pt-2" onClick={retake}>
                         <Image src='/btn-retake2.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>

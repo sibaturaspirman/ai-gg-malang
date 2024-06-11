@@ -20,10 +20,8 @@ export default function Result() {
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
-      name: 'MLB',
-      phone: '001',
-      stasiun: getCookie('stasiun'),
-      stasiunName: getCookie('stasiunName'),
+        name: '001',
+        phone: '001'
     });
     const { Canvas } = useQRCode();
 
@@ -31,11 +29,11 @@ export default function Result() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
-            const item2 = localStorage.getItem('faceURLResult')
+            // const item2 = localStorage.getItem('faceURLResult')
             setImageResultAI(item)
-            setLinkQR(item2)
+            // setLinkQR(item2)
         }
-    }, [imageResultAI, linkQR])
+    }, [imageResultAI])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -44,11 +42,11 @@ export default function Result() {
         //     event_action: 'CollectYourPhoto'
         // })
         
-        // import('html2canvas').then(html2canvas => {
-        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-        //         uploadImage(canvas)
-        //     )
-        // }).catch(e => {console("load failed")})
+        import('html2canvas').then(html2canvas => {
+            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+                uploadImage(canvas)
+            )
+        }).catch(e => {console("load failed")})
         setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
@@ -58,7 +56,7 @@ export default function Result() {
             let bodyFormData = new FormData();
             bodyFormData.append("name", payload.name);
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("totemId", payload.stasiun);
+            bodyFormData.append("fromPhone", true);
             bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
           
             const options = {
@@ -70,7 +68,7 @@ export default function Result() {
                 }
             };
             
-            await fetch('https://api.discoveryournextjourney.com/v1/photoai', options)
+            await fetch('https://api.priapunyaselera.ai/v1/photoai', options)
                 .then(response => response.json())
                 .then(response => {
                     // console.log(response)
@@ -100,7 +98,7 @@ export default function Result() {
     
 
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
@@ -167,7 +165,7 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
                 {imageResultAI && 
-                <div className='relative w-[90%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[70%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
@@ -180,28 +178,28 @@ export default function Result() {
                 }
                 <div className={`relative w-full ${loadingDownload ? 'hidden' : ''}`}>
                     <div className={`w-full`}>
-                        <div className={`w-full mt-14`}>
-                            <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
-                                {/* <div className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
-                                    <Image src='/btn-collect.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
-                                </div> */}
+                        <div className={`w-full mt-6`}>
+                            <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                                <button className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
+                                    <Image src='/btn-download2.png' width={1265} height={211} alt='Zirolu' className='w-full' priority />
+                                </button>
 
 
-                                <div className={`w-full`} onClick={downloadImageAI}>
+                                {/* <div className={`w-full`} onClick={downloadImageAI}>
                                 <ReactToPrint
                                 trigger={() => 
                                     <div className={`w-full`}>
                                         <div className="w-full relative mx-auto flex justify-center items-center">
-                                            <Image src='/btn-download.png' width={480} height={96} alt='Zirolu' className='w-full' priority />
+                                            <Image src='/btn-download2.png' width={1265} height={211} alt='Zirolu' className='w-full' priority />
                                         </div>
                                     </div>
                                 }
                                 content={() => componentRef}
                                 />
-                                </div> 
+                                </div>  */}
 
-                                <Link href='/' className="relative w-full mx-auto flex justify-center items-center" onClick={backHome}>
-                                    <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
+                                <Link href='/generate' className="relative w-full mx-auto flex justify-center items-center pt-2">
+                                    <Image src='/btn-retake2.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>
                         </div>
