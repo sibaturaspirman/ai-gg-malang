@@ -123,9 +123,9 @@ export default function Cam() {
         })
     }
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-16 px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed top-[10rem] w-[45%]'>
-                <Image src='/title-take.png' width={823} height={221} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0'>
+                <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-[-12vh]">
                 <div className='relative w-full mb-10'>
@@ -147,28 +147,28 @@ export default function Cam() {
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-xl lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                    <p className='block text-center text-base lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
                 }
             </div>
 
 
             {!enabled && 
                 <div className="fixed left-0 bottom-20 w-full flex justify-center items-center flex-col">
-                    <button className="relative mx-auto flex w-[60%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/btn-capture.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                    <button className="relative mx-auto flex w-[70%] justify-center items-center" onClick={captureVideo}>
+                        <Image src='/btn-capture.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
                     <Link href='/' className="relative w-[70%] mx-auto flex justify-center items-center">
-                        <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-back.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
             }
             <div className={`fixed left-0 bottom-14 w-full ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col">
+                <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={generate}>
-                        <Image src='/btn-next.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center pt-10" onClick={retake}>
-                        <Image src='/btn-retake2.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <Image src='/btn-retake2.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div>

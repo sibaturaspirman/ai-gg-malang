@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from 'react';
 import { setCookie } from 'cookies-next';
-import BtnHexagon from "../components/BtnHexagon";
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { Poppins} from "next/font/google";
@@ -18,12 +18,12 @@ export default function Register() {
 
 
     useEffect(() => {
-        document.getElementById('name').focus(); 
+        document.getElementById('phone').focus(); 
     }, [])
 
 
     const isValid = () => {
-      if (payload.name && payload.phone) return true
+      if (payload.phone) return true
       else return false;
     };
 
@@ -36,58 +36,34 @@ export default function Register() {
     };
 
     const handleSubmit = () => {
-        setCookie('name', payload.name);
         setCookie('phone', payload.phone);
         setTimeout(() => {
-            router.push('/gg-jdm/how');
+            router.push('/cam');
         }, 250);
     }
     return (
-        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col items-center justify-center pt-2 pb-5 px-5 lg:pt-0 lg:px-20 mt-0">
+        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col items-center justify-center pt-2 pb-2 px-5 lg:pt-0 lg:px-20 mt-0">
             <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-16 mb-6">
-                <div className='relative w-[80%] mb-14 lg:mb-20'>
-                    <label htmlFor="name" className={`text-light font-bold text-3xl lg:text-5xl mb-4 lg:mb-8 block ${poppins.className}`}>Full Name</label>
-                    <div className='relative w-full'>
-                        <Image
-                            src='/kai/icon-user.png'
-                            width={32}
-                            height={32}
-                            className='absolute left-4 top-1/2 -translate-y-1/2 lg:w-[55px]'
-                            alt='icon'
-                        />
-                        <input
-                            type='text'
-                            value={payload.name}
-                            id='name'
-                            name='name'
-                            className={`w-full rounded-lg font-semibold text-3xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-14 lg:pl-24 text-black bg-light ${poppins.className}`}
-                            placeholder='Your Name'
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {/* {payload.name} */}
-                    {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
-                </div>
                 <div className='relative w-[80%] mb-10'>
-                    <label htmlFor="name" className={`text-light font-bold text-3xl lg:text-5xl mb-4 lg:mb-8 block ${poppins.className}`}>Phone Number</label>
+                    <label htmlFor="name" className={`text-light font-bold text-xl mb-4 block ${poppins.className}`}>Phone Number</label>
                     <div className='relative w-full'>
                         <Image
-                            src='/kai/icon-call.png'
+                            src='/icon-call.png'
                             width={32}
                             height={32}
-                            className='absolute left-4 top-1/2 -translate-y-1/2 lg:w-[55px]'
+                            className='absolute left-3 top-1/2 -translate-y-1/2 w-[18px]'
                             alt='icon'
                         />
-                        <p className={`absolute left-[3.5rem] lg:left-[5rem] top-1/2 font-bold text-3xl lg:text-5xl text-black -translate-y-1/2 ${poppins.className}`}>+62</p>
+                        <p className={`absolute left-[2.1rem] top-1/2 font-bold text-base text-black -translate-y-1/2 ${poppins.className}`}>+62</p>
                         <input
                             type='number'
                             value={payload.phone}
                             id='phone'
                             name='phone'
-                            className={`w-full rounded-lg font-semibold text-3xl lg:text-5xl outline-none py-6 lg:py-8 pr-3 pl-32 lg:pl-48 text-black bg-light ${poppins.className}`}
+                            className={`w-full rounded-lg font-semibold text-base outline-none py-3 pr-3 pl-[4.5rem] text-black bg-light ${poppins.className}`}
                             placeholder='Your number'
                             onChange={handleChange}
                         />
@@ -96,11 +72,13 @@ export default function Register() {
                     {/* {errorMsg && <p className='text-[#E00A0A] text-xs'>{errorMsg}</p>} */}
                 </div>
             </div>
-            <div className="relative w-[60%] flex justify-center items-center">
-                <BtnHexagon
-                    disabled={!isValid()}
-                    onClick={handleSubmit}
-                />
+            <div className="relative w-[90%] mx-auto flex justify-center items-center flex-col">
+                <button className={`w-full relative mx-auto flex justify-center items-center ${payload.phone ? '' : 'pointer-events-none opacity-10'}`} onClick={handleSubmit}>
+                    <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                </button>
+                <Link href='/' className="relative w-full mx-auto flex justify-center items-center pt-6">
+                    <Image src='/btn-back.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                </Link>
             </div>
         </main>
     );
