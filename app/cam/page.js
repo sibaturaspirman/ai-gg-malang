@@ -124,7 +124,7 @@ export default function Cam() {
     }
     return (
         <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-[70%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center">

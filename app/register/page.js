@@ -43,7 +43,7 @@ export default function Register() {
     }
     return (
         <main className="flex fixed h-full w-full bg-page overflow-auto flex-col items-center justify-center pt-2 pb-2 px-5 lg:pt-0 lg:px-20 mt-0">
-            <div className='fixed w-[70%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center mt-16">
