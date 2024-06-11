@@ -42,6 +42,7 @@ body {
 .bg{
   background-image: url(../public/bg.jpeg);
   background-size: cover;
+  background-position: top center;
 }
 .bg-page{
   background-image: url(../public/bg-page.jpeg);
