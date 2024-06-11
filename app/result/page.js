@@ -148,24 +148,24 @@ export default function Result() {
 
 
             {/* DOWNLOAD & PRINT */}
-            {imageResultAI && 
+            {/* {imageResultAI && 
             <div className='relative w-full mt-0 mb-0 mx-auto flex justify-center items-center opacity-0 pointer-events-none'>
-                {/* <div className='absolute z-10 w-[20%]' id='capture'>
+                <div className='absolute z-10 w-[20%]' id='capture'>
                     <div className={`relative w-[full] flex`}>
                         <Image src={imageResultAI}  width={630} height={1120} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
-                </div> */}
+                </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
                     <div className={`relative w-[99%] flex`}>
                         <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
             </div>
-            }
+            } */}
 
             <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
                 {imageResultAI && 
-                <div className='relative w-[98%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[98%] mt-10 mx-auto flex justify-center items-center rounded-sm' id='capture' onClick={downloadImageAI}>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={1024} height={683} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
