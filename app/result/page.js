@@ -20,8 +20,8 @@ export default function Result() {
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
-        name: '001',
-        phone: '001'
+        name: 'GGFI',
+        phone: getCookie('phone'),
     });
     const { Canvas } = useQRCode();
 
@@ -47,7 +47,7 @@ export default function Result() {
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
-        setGenerateQR('true')
+        // setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
@@ -57,7 +57,7 @@ export default function Result() {
             bodyFormData.append("name", payload.name);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("fromPhone", true);
-            bodyFormData.append("file", blob, payload.name+'-mlb-ai-zirolu.png');
+            bodyFormData.append("file", blob, payload.name+'-ai-zirolu.png');
           
             const options = {
                 method: 'POST',
@@ -167,12 +167,12 @@ export default function Result() {
                 {imageResultAI && 
                 <div className='relative w-[70%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
                     <div className='relative w-full'>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                        <Image src={imageResultAI}  width={1024} height={683} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='rrelative p-5 mt-14 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-4xl overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
+                    <div className='rrelative p-3 mt-5 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-base overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
