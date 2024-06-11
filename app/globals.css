@@ -50,6 +50,7 @@ body {
 .bg-ggik{
   background-image: url(../public/bg-ggik.jpeg);
   background-size: cover;
+  background-position: top center;
 }
 .bg-page-ggik{
   background-image: url(../public/bg-page-ggik.jpeg);
