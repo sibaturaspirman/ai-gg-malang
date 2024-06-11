@@ -44,7 +44,7 @@ export default function Result() {
         // })
         
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
@@ -103,7 +103,7 @@ export default function Result() {
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
-                    <div className='fixed top-0 mx-auto w-[65%] mt-28'>
+                    {/* <div className='fixed top-0 mx-auto w-[65%] mt-28'>
                         <Image src='/title-scan.png' width={815} height={195} alt='Zirolu' className='w-full' priority />
                     </div>
                     <div className='relative mt-[-14vh] w-[60%] mx-auto flex items-center justify-center canvas-qr border-4 border-black' onClick={()=>{setGenerateQR(null)}}>
@@ -120,19 +120,16 @@ export default function Result() {
                             },
                         }}
                         />
-                    </div>
-                    {/* <p className={`text-center font-semibold text-2xl lg:text-4xl mt-10 ${poppins.className}`}>Scan this QR Code to Download your image.</p> */}
-
-                    {/* <div className={`relative w-full  ${showEmail ? 'hidden' : ''}`}>
-                    <div className="relative w-[60%] mx-auto flex justify-center items-center flex-col mt-5">
-                        <button className="relative mx-auto flex justify-center items-center" onClick={()=>setSendEmailGak('true')}>
-                            <Image src='/btn-send-email.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
-                        </button>
+                    </div> */}
+                    <p className={`text-center font-semibold text-xl ${poppins.className}`}>Download the image below</p>
+                    <div className={`relative w-full mb-5`}>
+                    <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col mt-2">
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
-                            <Image src='/btn-download-image.png' width={410} height={96} alt='Zirolu' className='w-full' priority />
+                            <Image src='/btn-download2.png' width={632} height={105} alt='Zirolu' className='w-full' priority />
                         </a>
                     </div>
-                    </div> */}
+                    </div>
+                    <p className={`text-center font-semibold text-xl ${poppins.className}`}>Or you can print at the Automatic Print Station</p>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
