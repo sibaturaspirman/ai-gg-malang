@@ -108,22 +108,14 @@ export default function Cam() {
 
     const retake = () => {
         setEnabled(false)
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'Retake - '+payload.stasiunName,
-            event_action: 'Next'
-        })
-    }
-
-    const generate = () => {
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'TakePhoto - '+payload.stasiunName,
-            event_action: 'Next'
-        })
+        // gtag('event', 'ClickButton', {
+        //     event_category: 'Button',
+        //     event_label: 'Retake - '+payload.stasiunName,
+        //     event_action: 'Next'
+        // })
     }
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
@@ -164,7 +156,7 @@ export default function Cam() {
             }
             <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={generate}>
+                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center">
                         <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center pt-2" onClick={retake}>

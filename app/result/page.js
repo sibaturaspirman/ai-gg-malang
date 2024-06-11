@@ -6,10 +6,10 @@ import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
-// import { Poppins} from "next/font/google";
-// const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
+import { Poppins} from "next/font/google";
+const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import BtnHexagon2 from "../components/BtnHexagon2";
-import ReactToPrint from "react-to-print";
+// import ReactToPrint from "react-to-print";
 
 
 export default function Result() {
@@ -44,7 +44,7 @@ export default function Result() {
         // })
         
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:5}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
@@ -99,10 +99,13 @@ export default function Result() {
     
 
     return (
-        <main className="flex fixed h-full w-full bg overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
+                    <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+                    <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+                    </div>
                     {/* <div className='fixed top-0 mx-auto w-[65%] mt-28'>
                         <Image src='/title-scan.png' width={815} height={195} alt='Zirolu' className='w-full' priority />
                     </div>
@@ -121,15 +124,15 @@ export default function Result() {
                         }}
                         />
                     </div> */}
-                    <p className={`text-center font-semibold text-xl ${poppins.className}`}>Download the image below</p>
-                    <div className={`relative w-full mb-5`}>
+                    <p className={`text-center font-semibold text-base px-5 text-white ${poppins.className}`}>Download the image below</p>
+                    <div className={`relative w-full mb-8`}>
                     <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col mt-2">
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
                             <Image src='/btn-download2.png' width={632} height={105} alt='Zirolu' className='w-full' priority />
                         </a>
                     </div>
                     </div>
-                    <p className={`text-center font-semibold text-xl ${poppins.className}`}>Or you can print at the Automatic Print Station</p>
+                    <p className={`text-center font-semibold text-base px-5 text-white ${poppins.className}`}>Or you can print at <br></br>the Automatic Print Station</p>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
