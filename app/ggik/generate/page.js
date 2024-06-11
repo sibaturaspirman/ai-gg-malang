@@ -284,7 +284,7 @@ export default function GenerateAmero() {
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-generate-ggik.png' width={867} height={146} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='' className="relative w-full mx-auto flex justify-center items-center pt-4">
+                        <Link href='/ggik' className="relative w-full mx-auto flex justify-center items-center pt-4">
                             <Image src='/btn-back-ggik.png' width={867} height={146} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
