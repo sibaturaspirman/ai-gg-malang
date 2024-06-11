@@ -17,6 +17,7 @@ export default function Result() {
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [loadingDownload, setLoadingDownload] = useState(null);
+    const [styleGender, setStyleGender] = useState(null);
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
@@ -29,11 +30,11 @@ export default function Result() {
         // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
-            // const item2 = localStorage.getItem('faceURLResult')
+            const item2 = localStorage.getItem('setStyleGender')
             setImageResultAI(item)
-            // setLinkQR(item2)
+            setStyleGender(item2)
         }
-    }, [imageResultAI])
+    }, [imageResultAI, styleGender])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -54,7 +55,7 @@ export default function Result() {
 
         canvas.toBlob(async function(blob) {
             let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name);
+            bodyFormData.append("name", payload.name+' - '+styleGender);
             bodyFormData.append("phone", payload.phone);
             bodyFormData.append("fromPhone", true);
             bodyFormData.append("file", blob, payload.name+'-ai-zirolu.png');
@@ -63,7 +64,7 @@ export default function Result() {
                 method: 'POST',
                 body: bodyFormData,
                 headers: {
-                    'Authorization': 'af879432-317d-40b4-88f8-d4c02267112b:VDNwFD1gOp86AKVEqlCIbfVN4evXoBxL',
+                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
                     'Accept': 'application/json',
                 }
             };

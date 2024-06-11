@@ -160,6 +160,7 @@ export default function GenerateAmero() {
             if (typeof localStorage !== 'undefined') {
                 localStorage.setItem("resulAIBase64", dataUrl)
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
+                localStorage.setItem("styleGender", styleGender)
             }
         
             setTimeout(() => {
