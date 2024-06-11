@@ -101,12 +101,12 @@ export default function Result() {
 
     return (
         <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+                <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
+            </div>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
-                    <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
-                        <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
-                    </div>
                     {/* <div className='fixed top-0 mx-auto w-[65%] mt-28'>
                         <Image src='/title-scan.png' width={815} height={195} alt='Zirolu' className='w-full' priority />
                     </div>
