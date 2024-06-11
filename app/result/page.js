@@ -181,7 +181,7 @@ export default function Result() {
                         <div className={`w-full mt-6`}>
                             <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
                                 <button className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
-                                    <Image src='/btn-download2.png' width={1265} height={211} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/btn-download2.png' width={632} height={105} alt='Zirolu' className='w-full' priority />
                                 </button>
 
 
