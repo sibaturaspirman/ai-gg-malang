@@ -44,7 +44,7 @@ export default function Result() {
         // })
         
         import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
+            html2canvas.default(document.querySelector("#capture"), {scale:2}).then(canvas => 
                 uploadImage(canvas)
             )
         }).catch(e => {console("load failed")})
