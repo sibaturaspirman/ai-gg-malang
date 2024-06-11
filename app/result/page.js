@@ -165,7 +165,7 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
                 {imageResultAI && 
-                <div className='relative w-[70%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
+                <div className='relative w-[98%] mt-10 mx-auto flex justify-center items-center rounded-sm' onClick={downloadImageAI}>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={1024} height={683} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
