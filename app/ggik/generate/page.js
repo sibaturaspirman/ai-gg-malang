@@ -59,15 +59,15 @@ export default function GenerateAmero() {
         
         if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 10))
+                generateImageSwap(styleGender, getRandomInt(1, 2))
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 10))
+                generateImageSwap(styleGender, getRandomInt(1, 2))
             }, 500);
         }else if(styleGender =='hijab'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 5))
+                generateImageSwap(styleGender, getRandomInt(1, 2))
             }, 500);
         }
 
@@ -118,7 +118,7 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
+        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggik-'+gender+'-'+number+'.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
@@ -164,7 +164,7 @@ export default function GenerateAmero() {
             }
         
             setTimeout(() => {
-                router.push('/result');
+                router.push('/ggik/result');
             }, 500);
         })
         } catch (error) {
@@ -177,9 +177,9 @@ export default function GenerateAmero() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
-            <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+                <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
             </div>
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -188,10 +188,11 @@ export default function GenerateAmero() {
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div> */}
-                    <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg leading-tight'>
-                        <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                    <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-base border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#760000] rounded-lg leading-tight'>
+                        <p className='font-bold'>{`Please wait, loading...`}</p>
+                        <p className='font-bold'>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
+                        <p className='mt-4'>REMINDER <br></br> Mohon untuk TIDAK MENYEBARKAN dulu hasil foto ini ke publik/via social media sebelum GGIK launching</p>
                     </div>
 
                     <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#EAC46D] text-[#000000] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
@@ -278,13 +279,13 @@ export default function GenerateAmero() {
                         </div>
                     </div>
                 </div>
-                <div className={`relative left-0 mt-6 w-full`}>
+                <div className={`relative left-0 mt-4 w-full`}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
-                            <Image src='/btn-generate.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                            <Image src='/btn-generate-ggik.png' width={867} height={146} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='' className="relative w-full mx-auto flex justify-center items-center">
-                            <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
+                        <Link href='' className="relative w-full mx-auto flex justify-center items-center pt-4">
+                            <Image src='/btn-back-ggik.png' width={867} height={146} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>
                 </div>

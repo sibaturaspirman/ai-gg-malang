@@ -47,6 +47,14 @@ body {
   background-image: url(../public/bg-page.jpeg);
   background-size: cover;
 }
+.bg-ggik{
+  background-image: url(../public/bg-ggik.jpeg);
+  background-size: cover;
+}
+.bg-page-ggik{
+  background-image: url(../public/bg-page-ggik.jpeg);
+  background-size: cover;
+}
 
 /* .font-paytone{
   font-family: var(--font-roboto_mono);

@@ -21,7 +21,7 @@ export default function Result() {
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
-        name: 'GGIF',
+        name: 'GGIK',
         phone: getCookie('phone'),
     });
     const { Canvas } = useQRCode();
@@ -57,7 +57,7 @@ export default function Result() {
             let bodyFormData = new FormData();
             bodyFormData.append("name", payload.name+' - '+styleGender);
             bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("type", 'ggif');
+            bodyFormData.append("type", 'ggik');
             bodyFormData.append("fromPhone", true);
             bodyFormData.append("file", blob, payload.name+'-ai-zirolu.png');
           
@@ -100,12 +100,12 @@ export default function Result() {
     
 
     return (
-        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+        <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>
-                    <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
-                    <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+                    <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+                        <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
                     </div>
                     {/* <div className='fixed top-0 mx-auto w-[65%] mt-28'>
                         <Image src='/title-scan.png' width={815} height={195} alt='Zirolu' className='w-full' priority />
@@ -125,7 +125,7 @@ export default function Result() {
                         }}
                         />
                     </div> */}
-                    <p className={`text-center font-semibold text-base px-5 text-white ${poppins.className}`}>Download the image below</p>
+                    <p className={`text-center font-semibold text-base px-5 text-[#760000] ${poppins.className}`}>Download the image below</p>
                     <div className={`relative w-full mb-8`}>
                     <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col mt-2">
                         <a href={linkQR} target='_blank' className="relative mx-auto flex justify-center items-center">
@@ -133,14 +133,14 @@ export default function Result() {
                         </a>
                     </div>
                     </div>
-                    <p className={`text-center font-semibold text-base px-5 text-white ${poppins.className}`}>Or you can print at <br></br>the Automatic Print Station</p>
+                    <p className={`text-center font-semibold text-base px-5 text-[#760000] ${poppins.className}`}>Or you can print at <br></br>the Automatic Print Station</p>
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
-                    <div className={`fixed left-0 bottom-0 w-full`}>
+                    <div className={`fixed left-0 bottom-10 w-full`}>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col" onClick={backHome}>
-                            <Link href='/' className="relative w-full mx-auto flex justify-center items-center pb-14">
-                                <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
+                            <Link href='/ggik' className="relative w-full mx-auto flex justify-center items-center pb-14">
+                                <Image src='/btn-back-ggik.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                             </Link>
                         </div>
                     </div>
@@ -174,7 +174,7 @@ export default function Result() {
                 </div>
                 }
                 {loadingDownload && 
-                    <div className='rrelative p-3 mt-5 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-base overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
+                    <div className='rrelative p-3 mt-5 border-2 border-[#760000] text-center bg-[#760000] text-[#fff] text-base overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 }
@@ -183,7 +183,7 @@ export default function Result() {
                         <div className={`w-full mt-6`}>
                             <div className="relative w-[90%] mx-auto flex justify-center items-center">
                                 <button className="w-full relative mx-auto flex justify-center items-center" onClick={downloadImageAI}>
-                                    <Image src='/btn-download.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/btn-download-ggik.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
                                 </button>
 
 
@@ -201,7 +201,7 @@ export default function Result() {
                                 </div>  */}
 
                                 <Link href='/generate' className="relative w-full mx-auto flex justify-center items-center pl-4">
-                                    <Image src='/btn-retake.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
+                                    <Image src='/btn-retake-ggik-3.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>
                         </div>
@@ -209,7 +209,7 @@ export default function Result() {
                 </div>
             </div>
             <div className="fixed w-full bottom-0 left-0 mx-auto pointer-events-none">
-                <Image src='/print-your.png' width={589} height={102} alt='Zirolu' className='w-full' priority />
+                <Image src='/print-your-ggik.png' width={589} height={102} alt='Zirolu' className='w-full' priority />
             </div>
         </main>
     );
