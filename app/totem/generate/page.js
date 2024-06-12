@@ -73,10 +73,10 @@ export default function GenerateAmero() {
         }else if(styleGender =='female'){
             setTimeout(() => {
                 // MALAM
-                // generateImageSwap(styleGender, getRandomInt(1, 12))
+                // generateImageSwap(styleGender, getRandomInt(1, 10))
 
                 // SIANG
-                generateImageSwap(styleGender, getRandomInt(1, 10))
+                generateImageSwap(styleGender, getRandomInt(1, 3))
             }, 500);
         }else if(styleGender =='hijab'){
             setTimeout(() => {
