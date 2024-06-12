@@ -44,9 +44,9 @@ export default function Register() {
     }
     return (
         <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col items-center justify-center pt-2 pb-2 px-5 lg:pt-0 lg:px-20 mt-0">
-            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            {/* <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             <div className="relative w-full flex flex-col justify-center items-center mt-16">
                 <div className='relative w-[90%] mb-6'>
                     <label htmlFor="name" className={`text-[#760000] font-bold text-xl mb-4 block ${poppins.className}`}>Phone Number</label>

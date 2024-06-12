@@ -31,10 +31,12 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('styleGender')
+            const item3 = localStorage.getItem('faceURLResult')
             setImageResultAI(item)
             setStyleGender(item2)
+            setLinkQR(item3)
         }
-    }, [imageResultAI, styleGender])
+    }, [imageResultAI, styleGender, linkQR])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -43,12 +45,12 @@ export default function Result() {
         //     event_action: 'CollectYourPhoto'
         // })
         
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
-        // setGenerateQR('true')
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:1}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
+        setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')

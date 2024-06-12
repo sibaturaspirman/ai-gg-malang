@@ -35,6 +35,11 @@ export default function GenerateAmero() {
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+
+    const [payload, setPayload] = useState({
+        name: 'GGIF Totem',
+        phone: getCookie('phone'),
+    });
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -154,7 +159,7 @@ export default function GenerateAmero() {
         // emitStrsing("sendImage", result.image.url);
 
         toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
+        .then(async dataUrl => {
             // console.log('RESULT:', dataUrl)
 
             if (typeof localStorage !== 'undefined') {
@@ -162,10 +167,40 @@ export default function GenerateAmero() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 localStorage.setItem("styleGender", styleGender)
             }
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    name:payload.name+' - '+styleGender,
+                    phone:payload.phone,
+                    imgUrl:FACE_URL_RESULT
+                }),
+                headers: {
+                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
+                .then(response => response.json())
+                .then(response => {
+                    // console.log(response)
+                    console.log(response.file)
+                    // setLinkQR(response.file)
+                    // setGenerateQR('true')
+                    // setLoadingDownload(null)
+                    setTimeout(() => {
+                        router.push('/totem/result');
+                    }, 10);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         
-            setTimeout(() => {
-                router.push('/totem/result');
-            }, 100);
+            // setTimeout(() => {
+            //     router.push('/totem/result');
+            // }, 100);
         })
         } catch (error) {
             setError(error);

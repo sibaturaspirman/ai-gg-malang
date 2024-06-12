@@ -116,9 +116,9 @@ export default function Cam() {
     }
     return (
         <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            {/* <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             <div className="relative w-full flex flex-col justify-center items-center mt-8">
                 <div className='relative w-full mb-2'>
                     {captured && 
@@ -130,7 +130,7 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[67%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[62%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }

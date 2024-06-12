@@ -130,7 +130,7 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[67%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[62%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }

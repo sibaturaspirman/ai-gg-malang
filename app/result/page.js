@@ -31,10 +31,12 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('styleGender')
+            const item3 = localStorage.getItem('faceURLResult')
             setImageResultAI(item)
             setStyleGender(item2)
+            setLinkQR(item3)
         }
-    }, [imageResultAI, styleGender])
+    }, [imageResultAI, styleGender, linkQR])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -43,12 +45,12 @@ export default function Result() {
         //     event_action: 'CollectYourPhoto'
         // })
         
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
-        // setGenerateQR('true')
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
+        setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
@@ -137,7 +139,7 @@ export default function Result() {
                     {/* <Link href='/' className='text-center font-semibold text-lg mt-2 p-20' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
                     {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
 
-                    <div className={`fixed left-0 bottom-0 w-full`}>
+                    <div className={`fixed left-0 bottom-10 w-full`}>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col" onClick={backHome}>
                             <Link href='/' className="relative w-full mx-auto flex justify-center items-center pb-14">
                                 <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />

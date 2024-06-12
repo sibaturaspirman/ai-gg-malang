@@ -31,10 +31,12 @@ export default function Result() {
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('resulAIBase64')
             const item2 = localStorage.getItem('styleGender')
+            const item3 = localStorage.getItem('faceURLResult')
             setImageResultAI(item)
             setStyleGender(item2)
+            setLinkQR(item3)
         }
-    }, [imageResultAI, styleGender])
+    }, [imageResultAI, styleGender, linkQR])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -43,12 +45,12 @@ export default function Result() {
         //     event_action: 'CollectYourPhoto'
         // })
         
-        import('html2canvas').then(html2canvas => {
-            html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
-                uploadImage(canvas)
-            )
-        }).catch(e => {console("load failed")})
-        // setGenerateQR('true')
+        // import('html2canvas').then(html2canvas => {
+        //     html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
+        //         uploadImage(canvas)
+        //     )
+        // }).catch(e => {console("load failed")})
+        setGenerateQR('true')
     }
     const uploadImage = async (canvas) => {
         setLoadingDownload('≈')
@@ -101,9 +103,9 @@ export default function Result() {
 
     return (
         <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            {/* <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             {/* QR */}
             {generateQR && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col z-40 bg-kai3 text-black bg-opacity-0'>

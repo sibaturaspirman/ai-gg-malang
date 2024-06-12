@@ -35,6 +35,11 @@ export default function GenerateAmero() {
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+
+    const [payload, setPayload] = useState({
+        name: 'GGIK',
+        phone: getCookie('phone'),
+    });
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -154,7 +159,7 @@ export default function GenerateAmero() {
         // emitStrsing("sendImage", result.image.url);
 
         toDataURL(FACE_URL_RESULT)
-        .then(dataUrl => {
+        .then(async dataUrl => {
             // console.log('RESULT:', dataUrl)
 
             if (typeof localStorage !== 'undefined') {
@@ -162,10 +167,43 @@ export default function GenerateAmero() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 localStorage.setItem("styleGender", styleGender)
             }
+
+          
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    name:payload.name+' - '+styleGender,
+                    phone:payload.phone,
+                    type:'ggik',
+                    fromPhone:true,
+                    imgUrl:FACE_URL_RESULT
+                }),
+                headers: {
+                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
+            
+            await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
+                .then(response => response.json())
+                .then(response => {
+                    // console.log(response)
+                    console.log(response.file)
+                    // setLinkQR(response.file)
+                    // setGenerateQR('true')
+                    // setLoadingDownload(null)
+                    setTimeout(() => {
+                        router.push('/ggik/result');
+                    }, 10);
+                })
+                .catch(err => {
+                    console.log(err)
+                });
         
-            setTimeout(() => {
-                router.push('/ggik/result');
-            }, 500);
+            // setTimeout(() => {
+            //     router.push('/ggik/result');
+            // }, 500);
         })
         } catch (error) {
             setError(error);
@@ -178,9 +216,9 @@ export default function GenerateAmero() {
 
     return (
         <main className="flex fixed h-full w-full bg-page-ggik overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
+            {/* <div className='fixed w-[25%] mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/logo-ggik.png' width={350} height={333} alt='Zirolu' className='w-full' priority />
-            </div>
+            </div> */}
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     {/* <div className='relative w-[60%] overflow-hidden'>
