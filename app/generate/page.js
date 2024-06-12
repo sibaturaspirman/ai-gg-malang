@@ -135,7 +135,10 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
+        // MALAM
         // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
+
+        // SIANG
         const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-siang.jpeg'
         console.log(urlGambar)
         setNumProses(2)
