@@ -64,15 +64,27 @@ export default function GenerateAmero() {
         
         if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 10))
+                // MALAM
+                // generateImageSwap(styleGender, getRandomInt(1, 10))
+
+                // SIANG
+                generateImageSwap(styleGender, getRandomInt(1, 6))
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 10))
+                // MALAM
+                // generateImageSwap(styleGender, getRandomInt(1, 10))
+
+                // SIANG
+                generateImageSwap(styleGender, getRandomInt(1, 3))
             }, 500);
         }else if(styleGender =='hijab'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 5))
+                // MALAM
+                // generateImageSwap(styleGender, getRandomInt(1, 5))
+
+                // SIANG
+                generateImageSwap(styleGender, getRandomInt(1, 3))
             }, 500);
         }
 
@@ -123,7 +135,8 @@ export default function GenerateAmero() {
 
 
     const generateImageSwap = async (gender, number) => {
-        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
+        // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
+        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-siang.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
