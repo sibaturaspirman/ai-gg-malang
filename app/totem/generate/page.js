@@ -136,10 +136,14 @@ export default function GenerateAmero() {
 
     const generateImageSwap = async (gender, number) => {
         // MALAM
-        // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/totem/ggfi-'+gender+'-'+number+'-malam.jpeg'
+        // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/totem/print/ggfi-'+gender+'-'+number+'-malam.jpeg'
         
         // SIANG
-        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/totem/ggfi-'+gender+'-'+number+'-siang.jpeg'
+        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/totem/print/ggfi-'+gender+'-'+number+'-siang.jpeg'
+
+        // COBA
+        // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/totem/print/ggfi-'+gender+'-1-siang.jpeg'
+        
         console.log(urlGambar)
         setNumProses(2)
         reset2();
