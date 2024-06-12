@@ -40,7 +40,7 @@ body {
 } */
 
 .bg{
-  background-image: url(../public/bg.jpeg);
+  background-image: url(../public/bg-rev.jpeg);
   background-size: cover;
   background-position: top center;
 }
