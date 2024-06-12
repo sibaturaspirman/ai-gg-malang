@@ -160,8 +160,8 @@ export default function Result() {
                     </div>
                 </div>
                 <div className='absolute top-0 left-0  w-full' ref={(el) => (componentRef = el)}>
-                    <div className={`relative w-[99%] flex`}>
-                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full'></Image>
+                    <div className={`relative w-[98.5%] flex`}>
+                        <Image src={imageResultAI}  width={683} height={1024} alt='Zirolu' className='relative block w-full left-[.5%]'></Image>
                     </div>
                 </div>
             </div>

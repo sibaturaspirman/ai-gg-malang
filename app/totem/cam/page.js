@@ -119,7 +119,7 @@ export default function Cam() {
             <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
-            <div className="relative w-full flex flex-col justify-center items-center">
+            <div className="relative w-full flex flex-col justify-center items-center mt-[28vh] mb-[-3vh]">
                 <div className='relative w-full mb-2'>
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
@@ -130,22 +130,25 @@ export default function Cam() {
                     }
 
                     {!enabled && 
-                    <div className='w-[67%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
+                    <div className='w-[67%] mx-auto absolute left-0 right-0 bottom-[1rem] z-10'>
                         <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
 
-                    <video ref={videoRef} className={`w-[67%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
-                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
+                    {/* <video ref={videoRef} className={`w-[67%] lg:w-full mx-auto border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas> */}
+
+                    <video ref={videoRef} className={`w-full rotate-90 mx-auto top-[-8rem] border-2 border-[#ffffff] rounded-sm ${enabled ? 'absolute opacity-0':'relative'}`} playsInline height={512}></video>
+                    <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'}  rotate-90 w-[60%] top-[-8rem] left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-8 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                    <p className='block text-center text-base lg:text-5xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
                 }
             </div>
 
 
             {!enabled && 
-                <div className="relative left-0 mt-10 w-full flex justify-center items-center flex-col">
+                <div className="relative left-0 mt-20 w-full flex justify-center items-center flex-col">
                     <button className="relative mx-auto flex w-[100%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
