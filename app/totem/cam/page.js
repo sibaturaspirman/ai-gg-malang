@@ -119,7 +119,7 @@ export default function Cam() {
             <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
                 <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
             </div>
-            <div className="relative w-full flex flex-col justify-center items-center mt-[28vh] mb-[-3vh]">
+            <div className="relative w-full flex flex-col justify-center items-center mt-[22vh] mb-[-3vh]">
                 <div className='relative w-full mb-2'>
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
