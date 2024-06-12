@@ -38,7 +38,7 @@ export default function GenerateAmero() {
 
     const [payload, setPayload] = useState({
         name: 'GGIF Totem',
-        phone: getCookie('phone'),
+        phone: '000',
     });
     
     const [numProses, setNumProses] = useState(0);
