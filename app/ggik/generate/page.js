@@ -64,15 +64,15 @@ export default function GenerateAmero() {
         
         if(styleGender =='male'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 2))
+                generateImageSwap(styleGender, getRandomInt(1, 4))
             }, 500);
         }else if(styleGender =='female'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 2))
+                generateImageSwap(styleGender, getRandomInt(1, 4))
             }, 500);
         }else if(styleGender =='hijab'){
             setTimeout(() => {
-                generateImageSwap(styleGender, getRandomInt(1, 2))
+                generateImageSwap(styleGender, getRandomInt(1, 4))
             }, 500);
         }
 
