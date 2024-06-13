@@ -136,8 +136,8 @@ export default function Result() {
                     </div>
                     </div>
                     <p className={`text-center font-semibold text-base px-5 text-white ${poppins.className}`}>Or you can print at <br></br>the Automatic Print Station</p> */}
-                    <Link href='/totem' className='text-center font-semibold text-5xl text-white w-full mt-2 p-52' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link>
-                    {/* <a href='/home' className='text-center font-semibold text-4xl py-20 pb-36 p-40'>Tap here to close</a> */}
+                    {/* <Link href='/totem' className='text-center font-semibold text-5xl text-white w-full mt-2 p-52' onClick={()=>{setGenerateQR(null)}}>Tap here to close</Link> */}
+                    <a href='/totem' className='text-center font-semibold text-5xl text-white w-full mt-2 p-52'>Tap here to close</a>
 
                     {/* <div className={`fixed left-0 bottom-0 w-full`}>
                         <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
