@@ -202,7 +202,7 @@ export default function Result() {
                                 />
                                 </div> 
 
-                                <Link href='/totem/generate' className="relative w-full mx-auto flex justify-center items-center pt-4">
+                                <Link href='/totem/cam' className="relative w-full mx-auto flex justify-center items-center pt-4">
                                     <Image src='/btn-retake2.png' width={820} height={160} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>
