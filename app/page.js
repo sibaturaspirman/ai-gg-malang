@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <Link href='/register' className="flex fixed w-full h-full bg flex-col items-center justify-center pt-12 p-0 lg:p-20">
+    <div className="flex fixed w-full h-full bg flex-col items-center justify-center pt-12 p-0 lg:p-20">
       <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0'>
         <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
       </div>
@@ -19,6 +19,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
