@@ -529,6 +529,8 @@ body {
   display: flex;align-items: center;justify-content: center;
   overflow: hidden;
   background-color: #530910;
+  background-image: url(../public/euro/thumb.jpg);
+  background-size: cover;
 }
 .videoLoading video{
   width: 100% !important;height: auto !important;
