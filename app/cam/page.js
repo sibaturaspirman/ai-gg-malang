@@ -115,11 +115,14 @@ export default function Cam() {
         // })
     }
     return (
-        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
-                <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
+            <Image src='/euro/logo-18.png' width={96} height={96} alt='Zirolu' className='w-full' priority />
             </div>
             <div className="relative w-full flex flex-col justify-center items-center">
+                <div className='relative w-[60%] mx-auto flex justify-center items-center pointer-events-none mb-2'>
+                    <Image src='/euro/title-take.png' width={348} height={94} alt='Zirolu' className='w-full' priority />
+                </div>
                 <div className='relative w-full mb-2'>
                     {captured && 
                     <div className='absolute top-0 left-0 right-0 bottom-0 w-[100px] h-[100px] lg:w-[174px] lg:h-[174px] overflow-hidden m-auto flex justify-center items-center pointer-events-none z-10'>
@@ -146,21 +149,21 @@ export default function Cam() {
 
             {!enabled && 
                 <div className="relative left-0 mt-4 w-full flex justify-center items-center flex-col">
-                    <button className="relative mx-auto flex w-[70%] justify-center items-center" onClick={captureVideo}>
-                        <Image src='/btn-capture.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                    <button className="relative mx-auto flex w-[100%] justify-center items-center" onClick={captureVideo}>
+                        <Image src='/euro/btn-take.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </button>
-                    <Link href='/' className="relative w-[70%] mx-auto flex justify-center items-center">
-                        <Image src='/btn-back.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                    <Link href='/' className="relative w-[100%] mx-auto flex justify-center items-center">
+                        <Image src='/btn-back.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
             }
             <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
-                <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
+                <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col">
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center">
-                        <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                        <Image src='/euro/btn-continue.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </Link>
-                    <button className="relative w-full mx-auto flex justify-center items-center pt-2" onClick={retake}>
-                        <Image src='/btn-retake2.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
+                    <button className="relative w-[70%] mx-auto flex justify-center items-center pt-2" onClick={retake}>
+                        <Image src='/btn-retake2.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div>

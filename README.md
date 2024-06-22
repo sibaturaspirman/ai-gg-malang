@@ -1,7 +1,7 @@
 ## HAVE TO FIXED
-1. pilihan lokasi by api
-2. result totem by lokasi api
-3. gambar border white
+1. share ✅
+2. gtm
+3. cookies
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

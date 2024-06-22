@@ -35,11 +35,12 @@ export default function GenerateAmero() {
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+    const [playVideo, setPlayVideo] = useState(false);
 
-    const [payload, setPayload] = useState({
-        name: 'GGIF',
-        phone: getCookie('phone'),
-    });
+    // const [payload, setPayload] = useState({
+    //     name: 'GGIF',
+    //     phone: getCookie('phone'),
+    // });
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -61,32 +62,10 @@ export default function GenerateAmero() {
 
     const generateAI = () => {
         setNumProses1(true)
-        
-        if(styleGender =='male'){
-            setTimeout(() => {
-                // MALAM
-                generateImageSwap(styleGender, getRandomInt(1, 10))
-
-                // SIANG
-                // generateImageSwap(styleGender, getRandomInt(1, 6))
-            }, 500);
-        }else if(styleGender =='female'){
-            setTimeout(() => {
-                // MALAM
-                generateImageSwap(styleGender, getRandomInt(1, 10))
-
-                // SIANG
-                // generateImageSwap(styleGender, getRandomInt(1, 3))
-            }, 500);
-        }else if(styleGender =='hijab'){
-            setTimeout(() => {
-                // MALAM
-                generateImageSwap(styleGender, getRandomInt(1, 5))
-
-                // SIANG
-                // generateImageSwap(styleGender, getRandomInt(1, 3))
-            }, 500);
-        }
+        setPlayVideo(true)
+        setTimeout(() => {
+            generateImageSwap(styleGender, getRandomInt(1, 4))
+        }, 100);
 
     }
 
@@ -136,10 +115,8 @@ export default function GenerateAmero() {
 
     const generateImageSwap = async (gender, number) => {
         // MALAM
-        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-malam.jpeg'
+        const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/euro/style/'+gender+'-'+number+'.jpg'
 
-        // SIANG
-        // const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/style/ggfi-'+gender+'-'+number+'-siang.jpeg'
         console.log(urlGambar)
         setNumProses(2)
         reset2();
@@ -184,41 +161,41 @@ export default function GenerateAmero() {
                 localStorage.setItem("styleGender", styleGender)
             }
           
-            const options = {
-                method: 'POST',
-                body: JSON.stringify({
-                    name:payload.name+' - '+styleGender,
-                    phone:payload.phone,
-                    type:'ggif',
-                    fromPhone:true,
-                    imgUrl:FACE_URL_RESULT
-                }),
-                headers: {
-                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            };
+            // const options = {
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         name:payload.name+' - '+styleGender,
+            //         phone:payload.phone,
+            //         type:'ggif',
+            //         fromPhone:true,
+            //         imgUrl:FACE_URL_RESULT
+            //     }),
+            //     headers: {
+            //         'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json'
+            //     }
+            // };
             
-            await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
-                .then(response => response.json())
-                .then(response => {
-                    // console.log(response)
-                    console.log(response.file)
-                    // setLinkQR(response.file)
-                    // setGenerateQR('true')
-                    // setLoadingDownload(null)
-                    setTimeout(() => {
-                        router.push('/result');
-                    }, 10);
-                })
-                .catch(err => {
-                    console.log(err)
-                });
+            // await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
+            //     .then(response => response.json())
+            //     .then(response => {
+            //         // console.log(response)
+            //         console.log(response.file)
+            //         // setLinkQR(response.file)
+            //         // setGenerateQR('true')
+            //         // setLoadingDownload(null)
+            //         setTimeout(() => {
+            //             router.push('/result');
+            //         }, 10);
+            //     })
+            //     .catch(err => {
+            //         console.log(err)
+            //     });
         
-            // setTimeout(() => {
-            //     router.push('/result');
-            // }, 500);
+            setTimeout(() => {
+                router.push('/result');
+            }, 10);
         })
         } catch (error) {
             setError(error);
@@ -230,9 +207,9 @@ export default function GenerateAmero() {
     };
 
     return (
-        <main className="flex fixed h-full w-full bg-page overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
-            <div className='fixed w-full mx-auto flex justify-center items-center pointer-events-none top-0 left-0 right-0'>
-            <Image src='/top-logo.png' width={1179} height={246} alt='Zirolu' className='w-full' priority />
+        <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col py-3 px-3 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+            <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
+                <Image src='/euro/logo-18.png' width={96} height={96} alt='Zirolu' className='w-full' priority />
             </div>
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
@@ -241,19 +218,22 @@ export default function GenerateAmero() {
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div> */}
-                    <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg leading-tight'>
+                    {/* <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg leading-tight'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
-                    </div>
+                    </div> */}
 
-                    <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#EAC46D] text-[#000000] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
+                    {/* <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#EAC46D] text-[#000000] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
                         <code>
                         {logs.filter(Boolean).join('\n')}
                         </code>
                         AI generate face... <br></br>
                         Loading model..<br></br>
-                    </pre>
+                    </pre> */}
+                    <div className='w-full flex items-center justify-center'>
+                        <ReactPlayer url={['/euro/loading-v2.mp4']}  playing={playVideo} playsinline loop className='videoLoading' width={405} height={720} />
+                    </div>
                 </div>
             }
             {/* LOADING */}
@@ -261,84 +241,483 @@ export default function GenerateAmero() {
             {/* <div className={`fixed top-[10rem] w-[50%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
                 <Image src='/title-select.png' width={686} height={112} alt='Zirolu' className='w-full' priority />
             </div> */}
-            <div className={`relative w-full mt-6 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative mt-0 w-[80%] mx-auto'>
+            <div className={`relative w-full mt-0 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
+                <div className='relative mt-0 mb-[5rem] w-full mx-auto'>
                     <div className='relative w-full hiddenx'>
-                        <div className='relative w-[80%] mb-2 mx-auto'>
-                            <Image src='/title-identity.png' width={542} height={119} alt='Zirolu' className='w-full' priority />
+                        <div className='relative w-[50%] mb-[-10px] mx-auto'>
+                            <Image src='/euro/title-select.png' width={380} height={76} alt='Zirolu' className='w-full' priority />
                         </div>
-                        <div className='w-[80%] mx-auto'>
+                        <div className='w-[90%] mx-auto'>
                             {/* GENDER FIX */}
-                            <ul className='choose mod7'>
-                                <li className='mb-2'>
+                            <ul className='choose mod8'>
+                                {/* <li className='mb-0'>
                                     <input
                                     id='choose_gender1'
                                     type="radio"
                                     name='choose_gender'
-                                    value="male"
+                                    value="albania"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender1">
                                         <Image
                                             className="relative h-auto w-full"
-                                            src="/gender-male.png"
+                                            src="/euro/n-albania.png"
                                             alt="icon"
-                                            width={541}
-                                            height={178}
+                                            width={136}
+                                            height={114}
                                             priority
                                         />
                                     </label>
                                 </li>
-                                <li className='mb-2'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender2'
                                     type="radio"
                                     name='choose_gender'
-                                    value="female"
+                                    value="austria"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender2">
                                         <Image
                                             className="relative h-auto w-full"
-                                            src="/gender-female.png"
+                                            src="/euro/n-austria.png"
                                             alt="icon"
-                                            width={541}
-                                            height={178}
+                                            width={136}
+                                            height={114}
                                             priority
                                         />
                                     </label>
-                                </li>
-                                <li>
+                                </li> */}
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender3'
                                     type="radio"
                                     name='choose_gender'
-                                    value="hijab"
+                                    value="belgium"
                                     onChange={(e) => setStyleGender(e.target.value)}
                                     />
                                     <label htmlFor="choose_gender3">
                                         <Image
                                             className="relative h-auto w-full"
-                                            src="/gender-hijab.png"
+                                            src="/euro/n-belgium.png"
                                             alt="icon"
-                                            width={541}
-                                            height={178}
+                                            width={136}
+                                            height={114}
                                             priority
                                         />
                                     </label>
                                 </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender4'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="croatia"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender4">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-croatia.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender5'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="ceko"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender5">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-ceko.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender6'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="denmark"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender6">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-denmark.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender7'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="england"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender7">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-england.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender8'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="france"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender8">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-france.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender9'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="georgia"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender9">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-georgia.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender10'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="germany"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender10">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-germany.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender11'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="hungary"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender11">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-hungary.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender12'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="italy"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender12">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-italy.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender13'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="dutch"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender13">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-netherlands.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender14'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="poland"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender14">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-poland.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender15'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="portugal"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender15">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-portugal.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender16'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="romania"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender16">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-romania.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender17'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="scotland"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender17">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-scotland.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender18'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="serbia"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender18">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-serbia.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender19'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="slovakia"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender19">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-slovakia.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender20'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="slovenia"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender20">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-slovenia.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                <li className='mb-0'>
+                                    <input
+                                    id='choose_gender21'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="spain"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender21">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-spain2.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li>
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender22'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="switz"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender22">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-switz.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender23'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="turkiye"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender23">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-turkiye.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
+                                {/* <li className='mb-0'>
+                                    <input
+                                    id='choose_gender24'
+                                    type="radio"
+                                    name='choose_gender'
+                                    value="ukraine"
+                                    onChange={(e) => setStyleGender(e.target.value)}
+                                    />
+                                    <label htmlFor="choose_gender24">
+                                        <Image
+                                            className="relative h-auto w-full"
+                                            src="/euro/n-ukraine.png"
+                                            alt="icon"
+                                            width={136}
+                                            height={114}
+                                            priority
+                                        />
+                                    </label>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div className={`relative left-0 mt-6 w-full`}>
+                <div className={`fixed bottom-0 left-0 mt-6 w-full bg-[#530910] ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
-                        <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
-                            <Image src='/btn-generate.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
+                        <button className={`w-full relative mx-auto flex justify-center items-center`}>
+                            <Image src='/euro/btn-generate.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/' className="relative w-full mx-auto flex justify-center items-center">
+                        {/* <Link href='/' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </div>
