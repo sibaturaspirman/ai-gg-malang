@@ -9,6 +9,7 @@ import { useEffect, useState, useMemo, useRef } from 'react';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { setTimeout } from 'timers';
 // import io from 'socket.io-client';
 
 // @snippet:start(client.config)
@@ -27,6 +28,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+let videoLoadingSelesai = false, videoLoadingSelesai2 = false, generateLoadingSelesai = false, generateLoadingSelesai2 = false;
 let URL_RESULT = ''
 let FACE_URL_RESULT = ''
 export default function GenerateAmero() {
@@ -36,6 +38,11 @@ export default function GenerateAmero() {
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
+
+    // const [videoLoadingSelesai, setVideoLoadingSelesai] = useState(false);
+    // const [generateLoadingSelesai, setGenerateLoadingSelesai] = useState(false);
+    // const [videoLoadingSelesai2, setVideoLoadingSelesai2] = useState(false);
+    // const [generateLoadingSelesai2, setGenerateLoadingSelesai2] = useState(false);
 
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
     if(lokasi == undefined){
@@ -207,14 +214,15 @@ export default function GenerateAmero() {
             //         console.log(err)
             //     });
         
-            setTimeout(() => {
-                gtag('event', 'Euro2024', {
-                    event_category: 'pageviewed',
-                    event_label: 'Result - '+lokasi,
-                    event_action: 'PageOpened'
-                })
-                router.push('/result');
-            }, 10);
+            // setTimeout(() => {
+                // gtag('event', 'Euro2024', {
+                //     event_category: 'pageviewed',
+                //     event_label: 'Result - '+lokasi,
+                //     event_action: 'PageOpened'
+                // })
+                // router.push('/result');
+                nextResultLoading2()
+            // }, 10);
         })
         } catch (error) {
             setError(error);
@@ -224,6 +232,50 @@ export default function GenerateAmero() {
         }
         // @snippet:end
     };
+
+    const nextResultLoading = () => {
+        console.log("video Selessai")
+        videoLoadingSelesai = true
+        videoLoadingSelesai2 = true
+
+        console.log(videoLoadingSelesai)
+        console.log(videoLoadingSelesai2)
+        console.log(generateLoadingSelesai)
+        console.log(generateLoadingSelesai2)
+
+        setTimeout(() => {
+            if(videoLoadingSelesai && generateLoadingSelesai){
+                gtag('event', 'Euro2024', {
+                    event_category: 'pageviewed',
+                    event_label: 'Result - '+lokasi,
+                    event_action: 'PageOpened'
+                })
+                router.push('/result');
+            }
+        }, 100);
+    }
+
+    const nextResultLoading2 = () => {
+        console.log("Generate Selessai")
+        generateLoadingSelesai = true
+        generateLoadingSelesai2 = true
+
+        console.log(videoLoadingSelesai)
+        console.log(videoLoadingSelesai2)
+        console.log(generateLoadingSelesai)
+        console.log(generateLoadingSelesai2)
+
+        setTimeout(() => {
+            if(videoLoadingSelesai2 && generateLoadingSelesai2){
+                gtag('event', 'Euro2024', {
+                    event_category: 'pageviewed',
+                    event_label: 'Result - '+lokasi,
+                    event_action: 'PageOpened'
+                })
+                router.push('/result');
+            }
+        }, 100);
+    }
 
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col py-3 px-3 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
@@ -251,7 +303,7 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
-                        <ReactPlayer url={['/euro/loading-v2.mp4']}  playing={playVideo} playsinline loop className='videoLoading' width={405} height={720} />
+                        <ReactPlayer url={['/euro/loading-v2.mp4']}  playing={playVideo} playsinline className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
                     </div>
                 </div>
             }

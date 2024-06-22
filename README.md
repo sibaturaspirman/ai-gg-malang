@@ -2,7 +2,7 @@
 1. share ✅
 2. gtm ✅
 3. cookies ✅
-4. pindah result pas video beres
+4. pindah result pas video beres ✅
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
