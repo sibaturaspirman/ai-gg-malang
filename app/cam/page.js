@@ -34,9 +34,9 @@ export default function Cam() {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi == undefined){
-        router.push('/scan');
-    }
+    // if(lokasi == undefined){
+    //     router.push('/scan');
+    // }
 
     const [payload, setPayload] = useState({
       stasiun: getCookie('stasiun'),

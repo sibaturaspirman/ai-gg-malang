@@ -23,9 +23,9 @@ export default function Result() {
     let componentRef = useRef();
 
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi == undefined){
-        router.push('/scan');
-    }
+    // if(lokasi == undefined){
+    //     router.push('/scan');
+    // }
 
     const { Canvas } = useQRCode();
 

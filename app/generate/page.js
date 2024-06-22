@@ -45,9 +45,9 @@ export default function GenerateAmero() {
     // const [generateLoadingSelesai2, setGenerateLoadingSelesai2] = useState(false);
 
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi == undefined){
-        router.push('/scan');
-    }
+    // if(lokasi == undefined){
+    //     router.push('/scan');
+    // }
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
