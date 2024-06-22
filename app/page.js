@@ -60,7 +60,7 @@ export default function Home() {
   }
 
   function SearchBarFallback() {
-    return <>placeholder</>
+    // return <>placeholder</>
   }
 
   return (
