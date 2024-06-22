@@ -8,28 +8,28 @@ import { useSearchParams } from "next/navigation";
 import {Suspense} from "react";
 
 export default function Home() {
-  const searchParams = useSearchParams();
-  const lokasiParam = searchParams.get("lokasi");
-  const qrParam = searchParams.get("qr");
-  const [scanQR, setScanQR] = useState(false);
-  const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+  // const searchParams = useSearchParams();
+  // const lokasiParam = searchParams.get("lokasi");
+  // const qrParam = searchParams.get("qr");
+  // const [scanQR, setScanQR] = useState(false);
+  // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
   
-  useEffect(() => {
-    if(qrParam == null || lokasiParam == null){
-      setScanQR(false)
-    }else{
-      if(qrParam == 'yes'){
-        setScanQR(true)
+  // useEffect(() => {
+  //   if(qrParam == null || lokasiParam == null){
+  //     setScanQR(false)
+  //   }else{
+  //     if(qrParam == 'yes'){
+  //       setScanQR(true)
 
-        var date = new Date();
-        date.setTime(date.getTime() + (1800 * 1000));
-        setCookie('lokasi_GGFIEURO', lokasiParam, { expires: date });
-        setLokasi(lokasiParam)
-        // console.log(lokasiParam)
-        // console.log(qrParam)
-      }
-    }
-  }, []);
+  //       var date = new Date();
+  //       date.setTime(date.getTime() + (1800 * 1000));
+  //       setCookie('lokasi_GGFIEURO', lokasiParam, { expires: date });
+  //       setLokasi(lokasiParam)
+  //       // console.log(lokasiParam)
+  //       // console.log(qrParam)
+  //     }
+  //   }
+  // }, []);
 
   const pageOpened = () => {
     gtag('event', 'Euro2024', {
@@ -60,7 +60,7 @@ export default function Home() {
           <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
-      <Suspense fallback={<>Loading...</>}></Suspense>
+      {/* <Suspense fallback={<>Loading...</>}></Suspense> */}
 
       <div className='fixed w-[40%] mx-auto flex justify-center items-center pointer-events-none top-4 left-0 right-0'>
         <Image src='/euro/logo-ggfi.png' width={146} height={62} alt='Zirolu' className='w-full' priority />
