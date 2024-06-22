@@ -9,11 +9,6 @@ import Link from 'next/link';
 // import { useRouter } from 'next/navigation';
 
 export default function Scan() {
-    gtag('event', 'Euro2024', {
-        event_category: 'pageviewed',
-        event_label: 'PopUpError',
-        event_action: 'PageOpened'
-    })
 
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
