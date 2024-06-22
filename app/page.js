@@ -11,7 +11,7 @@ export default function Home() {
   // const searchParams = useSearchParams();
   // const lokasiParam = searchParams.get("lokasi");
   // const qrParam = searchParams.get("qr");
-  // const [scanQR, setScanQR] = useState(false);
+  const [scanQR, setScanQR] = useState(false);
   // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
   
   // useEffect(() => {
