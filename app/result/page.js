@@ -13,6 +13,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import ReactToPrint from "react-to-print";
 
 export default function Result() {
+    const router = useRouter();
     const [imageResultAI, setImageResultAI] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
