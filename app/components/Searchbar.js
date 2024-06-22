@@ -18,7 +18,7 @@ export default function SearchBar() {
       // setScanQR(true)
 
       var date = new Date();
-      date.setTime(date.getTime() + (1800 * 1000));
+      date.setTime(date.getTime() + (14400 * 1000)); //3600 = 1 jam | set 14400 = 4 jam
       setCookie('lokasi_GGFIEURO', lokasiParam, { expires: date });
     }
   }
