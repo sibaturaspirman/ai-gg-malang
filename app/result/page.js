@@ -19,6 +19,7 @@ export default function Result() {
     const [linkQR, setLinkQR] = useState('https://zirolu.id/');
     const [loadingDownload, setLoadingDownload] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
+    const [isNativeShare, setNativeShare] = useState(false);
     let componentRef = useRef();
 
     const [payload, setPayload] = useState({
@@ -36,6 +37,9 @@ export default function Result() {
             setImageResultAI(item)
             setStyleGender(item2)
             setLinkQR(item3)
+        }
+        if (navigator.share) {
+            setNativeShare(true);
         }
     }, [imageResultAI, styleGender, linkQR])
 
@@ -107,7 +111,7 @@ export default function Result() {
         //     event_action: 'BackToHome'
         // })
 
-        if(webShareSupported){
+        if(isNativeShare){
             // NEW WAY
             import('html2canvas').then(html2canvas => {
                 html2canvas.default(document.querySelector("#capture"), {scale:4}).then(async canvas => {
