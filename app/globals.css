@@ -528,6 +528,7 @@ body {
   width: 100% !important;height: 100% !important;
   display: flex;align-items: center;justify-content: center;
   overflow: hidden;
+  background-color: #530910;
 }
 .videoLoading video{
   width: 100% !important;height: auto !important;

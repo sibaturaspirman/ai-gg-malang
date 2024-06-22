@@ -33,6 +33,10 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+    if(lokasi == undefined){
+        router.push('/scan');
+    }
 
     const [payload, setPayload] = useState({
       stasiun: getCookie('stasiun'),
@@ -46,6 +50,13 @@ export default function Cam() {
         height = 512,
     }) => {
         setCaptured(true)
+
+        gtag('event', 'Euro2024', {
+            event_category: 'clickButton',
+            event_label: 'Take Photo - '+lokasi,
+            event_action: 'Start'
+        })
+
         setTimeout(() => {
             setEnabled(true)
             setCaptured(null)
@@ -114,6 +125,16 @@ export default function Cam() {
         //     event_action: 'Next'
         // })
     }
+
+    const gtmGenerate = () => {
+        setTimeout(() => {
+            gtag('event', 'Euro2024', {
+                event_category: 'pageviewed',
+                event_label: 'SelectCountry - '+lokasi,
+                event_action: 'PageOpened'
+            })
+        }, 0);
+    }
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
@@ -159,7 +180,7 @@ export default function Cam() {
             }
             <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[100%] mx-auto flex justify-center items-center flex-col">
-                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center">
+                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={gtmGenerate}>
                         <Image src='/euro/btn-continue.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-[70%] mx-auto flex justify-center items-center pt-2" onClick={retake}>

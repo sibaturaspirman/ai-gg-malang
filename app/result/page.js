@@ -6,6 +6,7 @@ import { getCookie } from 'cookies-next';
 import React,{ useEffect, useState, useRef } from 'react';
 import { useQRCode } from 'next-qrcode';
 // import io from 'socket.io-client';
+import { useRouter } from 'next/navigation';
 import { Poppins} from "next/font/google";
 const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import BtnHexagon2 from "../components/BtnHexagon2";
@@ -20,10 +21,11 @@ export default function Result() {
     const [isNativeShare, setNativeShare] = useState(false);
     let componentRef = useRef();
 
-    const [payload, setPayload] = useState({
-        name: 'GGIF',
-        phone: getCookie('phone'),
-    });
+    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+    if(lokasi == undefined){
+        router.push('/scan');
+    }
+
     const { Canvas } = useQRCode();
 
     useEffect(() => {
@@ -103,11 +105,11 @@ export default function Result() {
     }
 
     const sharePhoto = async () => {
-        // gtag('event', 'ClickButton', {
-        //     event_category: 'Button',
-        //     event_label: 'ResultPage - '+payload.stasiunName,
-        //     event_action: 'BackToHome'
-        // })
+        gtag('event', 'Euro2024', {
+            event_category: 'pageviewed',
+            event_label: 'Result - '+lokasi+' - '+styleGender,
+            event_action: 'SharePhoto'
+        })
 
         if(isNativeShare){
             // NEW WAY

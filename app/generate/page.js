@@ -37,10 +37,10 @@ export default function GenerateAmero() {
     const [character, setCharacter] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
 
-    // const [payload, setPayload] = useState({
-    //     name: 'GGIF',
-    //     phone: getCookie('phone'),
-    // });
+    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+    if(lokasi == undefined){
+        router.push('/scan');
+    }
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -66,6 +66,20 @@ export default function GenerateAmero() {
         setTimeout(() => {
             generateImageSwap(styleGender, getRandomInt(1, 4))
         }, 100);
+
+        gtag('event', 'Euro2024', {
+            event_category: 'clickButton',
+            event_label: 'SelectCountry - '+lokasi+' - '+styleGender,
+            event_action: 'GenerateAI'
+        })
+
+        setTimeout(() => {
+            gtag('event', 'Euro2024', {
+                event_category: 'pageviewed',
+                event_label: 'Loading Result - '+lokasi,
+                event_action: 'PageOpened'
+            })
+        }, 20);
 
     }
 
@@ -194,6 +208,11 @@ export default function GenerateAmero() {
             //     });
         
             setTimeout(() => {
+                gtag('event', 'Euro2024', {
+                    event_category: 'pageviewed',
+                    event_label: 'Result - '+lokasi,
+                    event_action: 'PageOpened'
+                })
                 router.push('/result');
             }, 10);
         })
