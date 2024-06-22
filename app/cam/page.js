@@ -33,10 +33,11 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const [scanQR, setScanQR] = useState(false);
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    // if(lokasi == undefined){
-    //     router.push('/scan');
-    // }
+    if(lokasi != undefined){
+        setScanQR(true)
+    }
 
     const [payload, setPayload] = useState({
       stasiun: getCookie('stasiun'),
@@ -137,6 +138,12 @@ export default function Cam() {
     }
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
+
+        <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
+          <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
+            <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+          </div>
+        </div>
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
             <Image src='/euro/logo-18.png' width={96} height={96} alt='Zirolu' className='w-full' priority />
             </div>

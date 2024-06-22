@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { setCookie, getCookie } from 'cookies-next';
 import { useSearchParams } from "next/navigation";
+import {Suspense} from "react";
 
 export default function Home() {
   const searchParams = useSearchParams();
@@ -59,6 +60,7 @@ export default function Home() {
           <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
+      <Suspense fallback={<>Loading...</>}></Suspense>
 
       <div className='fixed w-[40%] mx-auto flex justify-center items-center pointer-events-none top-4 left-0 right-0'>
         <Image src='/euro/logo-ggfi.png' width={146} height={62} alt='Zirolu' className='w-full' priority />
