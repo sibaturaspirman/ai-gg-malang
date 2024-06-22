@@ -310,7 +310,7 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
-                        <ReactPlayer url={['/euro/loading-v2.mp4']} light = {true} playing={playVideo} playsinline className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
+                        <ReactPlayer url={['/euro/loading-v2.mp4']} playing={playVideo} playsinline className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
                     </div>
                 </div>
             }
