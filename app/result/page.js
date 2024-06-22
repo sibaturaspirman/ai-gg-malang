@@ -11,8 +11,6 @@ const poppins = Poppins({ subsets: ["latin"], weight: ['400','700', '900'] });
 // import BtnHexagon2 from "../components/BtnHexagon2";
 // import ReactToPrint from "react-to-print";
 
-const webShareSupported = 'canShare' in navigator;
-
 export default function Result() {
     const [imageResultAI, setImageResultAI] = useState(null);
     const [generateQR, setGenerateQR] = useState(null);
