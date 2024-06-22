@@ -38,16 +38,12 @@ export default function GenerateAmero() {
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
-
-    // const [videoLoadingSelesai, setVideoLoadingSelesai] = useState(false);
-    // const [generateLoadingSelesai, setGenerateLoadingSelesai] = useState(false);
-    // const [videoLoadingSelesai2, setVideoLoadingSelesai2] = useState(false);
-    // const [generateLoadingSelesai2, setGenerateLoadingSelesai2] = useState(false);
-
+    
+    const [scanQR, setScanQR] = useState(false);
     const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    // if(lokasi == undefined){
-    //     router.push('/scan');
-    // }
+    if(lokasi != undefined){
+        setScanQR(true)
+    }
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -282,6 +278,11 @@ export default function GenerateAmero() {
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
                 <Image src='/euro/logo-18.png' width={96} height={96} alt='Zirolu' className='w-full' priority />
             </div>
+        <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
+          <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
+            <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+          </div>
+        </div>
             {numProses1 && 
                 <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
                     {/* <div className='relative w-[60%] overflow-hidden'>
