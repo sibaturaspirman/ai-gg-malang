@@ -4,63 +4,77 @@ import React,{ useEffect, useState, useRef } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 import { setCookie, getCookie } from 'cookies-next';
-import { useSearchParams } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import SearchBar from './components/Searchbar'
 import {Suspense} from "react";
 
 export default function Home() {
   // const searchParams = useSearchParams();
   // const lokasiParam = searchParams.get("lokasi");
   // const qrParam = searchParams.get("qr");
-  const [scanQR, setScanQR] = useState(false);
+  const router = useRouter();
+  const [scanQR, setScanQR] = useState(true);
   // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-  
-  // useEffect(() => {
-  //   if(qrParam == null || lokasiParam == null){
-  //     setScanQR(false)
-  //   }else{
-  //     if(qrParam == 'yes'){
-  //       setScanQR(true)
+  // if(lokasi != undefined){
+  //     setScanQR(true)
+  // }
 
-  //       var date = new Date();
-  //       date.setTime(date.getTime() + (1800 * 1000));
-  //       setCookie('lokasi_GGFIEURO', lokasiParam, { expires: date });
-  //       setLokasi(lokasiParam)
-  //       // console.log(lokasiParam)
-  //       // console.log(qrParam)
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    if(getCookie('lokasi_GGFIEURO') != undefined){
+        setScanQR(true)
+    }else{
+      setScanQR(false)
+    }
+  }, [scanQR]);
 
   const pageOpened = () => {
-    gtag('event', 'Euro2024', {
-      event_category: 'pageviewed',
-      event_label: lokasiParam,
-      event_action: 'PageOpened'
-    })
-
-    gtag('event', 'Euro2024', {
-      event_category: 'clickButton',
-      event_label: 'MainScreen - '+lokasiParam,
-      event_action: 'Start'
-    })
-
     setTimeout(() => {
-      gtag('event', 'Euro2024', {
-        event_category: 'pageviewed',
-        event_label: 'TakePhoto - '+lokasiParam,
-        event_action: 'PageOpened'
-      })
-    }, 0);
+      if(getCookie('lokasi_GGFIEURO') != undefined){
+        setScanQR(true)
+
+        gtag('event', 'Euro2024', {
+          event_category: 'pageviewed',
+          event_label: getCookie('lokasi_GGFIEURO'),
+          event_action: 'PageOpened'
+        })
+
+        gtag('event', 'Euro2024', {
+          event_category: 'clickButton',
+          event_label: 'MainScreen - '+getCookie('lokasi_GGFIEURO'),
+          event_action: 'Start'
+        })
+
+        setTimeout(() => {
+          gtag('event', 'Euro2024', {
+            event_category: 'pageviewed',
+            event_label: 'TakePhoto - '+getCookie('lokasi_GGFIEURO'),
+            event_action: 'PageOpened'
+          })
+        }, 0);
+
+        router.push('/cam');
+      }else{
+        setScanQR(false)
+      }
+    }, 300);
+  }
+
+  function SearchBarFallback() {
+    return <>placeholder</>
   }
 
   return (
-    <Link href='/cam' className={`flex fixed w-full h-full bg-euro flex-col items-center justify-center ${scanQR ? '' : 'pointer-events-none'}`} onClick={pageOpened}>
-      <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
-        <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
-          <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+    <div className={`flex fixed w-full h-full bg-euro flex-col items-center justify-center ${scanQR ? '' : 'pointer-events-none'}`} onClick={pageOpened}>
+
+      <Suspense fallback={<SearchBarFallback />}>
+        <SearchBar />
+      </Suspense>
+
+      <div className={`fixed top-0 left-0 w-full h-full flex items-end justify-center content-end z-50 ${scanQR ? 'hidden' : ''}`}>
+        <div className='relative w-[85%] mx-auto mb-1 flex justify-center items-center pointer-events-none'>
+          <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
-      {/* <Suspense fallback={<>Loading...</>}></Suspense> */}
 
       <div className='fixed w-[40%] mx-auto flex justify-center items-center pointer-events-none top-4 left-0 right-0'>
         <Image src='/euro/logo-ggfi.png' width={146} height={62} alt='Zirolu' className='w-full' priority />
@@ -72,7 +86,7 @@ export default function Home() {
         <Image src='/euro/pattern-bawah.png' width={562} height={178} alt='Zirolu' className='w-full' priority />
       </div>
       <div className="fixed w-full mx-auto pointer-events-none bottom-0 left-0 right-0 py-3 px-5">
-        <div className="relative w-[40%] flex justify-center items-center ml-auto">
+        <div className="relative w-[40%] flex justify-center items-center ml-auto mb-8">
           <div className='animate-upDown relative w-full mx-auto flex justify-center items-center pointer-events-none'>
             <Image src='/euro/jersey.png' width={396} height={452} alt='Zirolu' className='w-full' priority />
           </div>
@@ -81,6 +95,6 @@ export default function Home() {
           <Image src='/euro/btn-start.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

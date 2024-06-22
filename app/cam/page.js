@@ -33,17 +33,23 @@ export default function Cam() {
     // const waktuBatasTake = useRef(null);
     const videoRef = useRef(null);
     const previewRef = useRef(null);
-    const [scanQR, setScanQR] = useState(false);
-    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi != undefined){
-        setScanQR(true)
-    }
+    const [scanQR, setScanQR] = useState(true);
+    // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+    // if(lokasi != undefined){
+    //     setScanQR(true)
+    // }
 
     const [payload, setPayload] = useState({
       stasiun: getCookie('stasiun'),
       stasiunName: getCookie('stasiunName'),
     });
-
+    useEffect(() => {
+        if(getCookie('lokasi_GGFIEURO') != undefined){
+            setScanQR(true)
+        }else{
+          setScanQR(false)
+        }
+    }, [scanQR]);
     useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
@@ -54,7 +60,7 @@ export default function Cam() {
 
         gtag('event', 'Euro2024', {
             event_category: 'clickButton',
-            event_label: 'Take Photo - '+lokasi,
+            event_label: 'Take Photo - '+getCookie('lokasi_GGFIEURO'),
             event_action: 'Start'
         })
 
@@ -131,7 +137,7 @@ export default function Cam() {
         setTimeout(() => {
             gtag('event', 'Euro2024', {
                 event_category: 'pageviewed',
-                event_label: 'SelectCountry - '+lokasi,
+                event_label: 'SelectCountry - '+getCookie('lokasi_GGFIEURO'),
                 event_action: 'PageOpened'
             })
         }, 0);
@@ -141,7 +147,7 @@ export default function Cam() {
 
         <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
           <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
-            <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+            <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>

@@ -38,12 +38,12 @@ export default function GenerateAmero() {
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
-    
-    const [scanQR, setScanQR] = useState(false);
-    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi != undefined){
-        setScanQR(true)
-    }
+
+    const [scanQR, setScanQR] = useState(true);
+    // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
+    // if(lokasi != undefined){
+    //     setScanQR(true)
+    // }
     
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
@@ -61,7 +61,13 @@ export default function GenerateAmero() {
             const item = localStorage.getItem('faceImage')
             setImageFile(item)
         }
-    }, [imageFile])
+
+        if(getCookie('lokasi_GGFIEURO') != undefined){
+            setScanQR(true)
+        }else{
+          setScanQR(false)
+        }
+    }, [imageFile, scanQR])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -72,14 +78,14 @@ export default function GenerateAmero() {
 
         gtag('event', 'Euro2024', {
             event_category: 'clickButton',
-            event_label: 'SelectCountry - '+lokasi+' - '+styleGender,
+            event_label: 'SelectCountry - '+getCookie('lokasi_GGFIEURO')+' - '+styleGender,
             event_action: 'GenerateAI'
         })
 
         setTimeout(() => {
             gtag('event', 'Euro2024', {
                 event_category: 'pageviewed',
-                event_label: 'Loading Result - '+lokasi,
+                event_label: 'Loading Result - '+getCookie('lokasi_GGFIEURO'),
                 event_action: 'PageOpened'
             })
         }, 20);
@@ -213,7 +219,7 @@ export default function GenerateAmero() {
             // setTimeout(() => {
                 // gtag('event', 'Euro2024', {
                 //     event_category: 'pageviewed',
-                //     event_label: 'Result - '+lokasi,
+                //     event_label: 'Result - '+getCookie('lokasi_GGFIEURO'),
                 //     event_action: 'PageOpened'
                 // })
                 // router.push('/result');
@@ -243,7 +249,7 @@ export default function GenerateAmero() {
             if(videoLoadingSelesai && generateLoadingSelesai){
                 gtag('event', 'Euro2024', {
                     event_category: 'pageviewed',
-                    event_label: 'Result - '+lokasi,
+                    event_label: 'Result - '+getCookie('lokasi_GGFIEURO'),
                     event_action: 'PageOpened'
                 })
                 router.push('/result');
@@ -265,7 +271,7 @@ export default function GenerateAmero() {
             if(videoLoadingSelesai2 && generateLoadingSelesai2){
                 gtag('event', 'Euro2024', {
                     event_category: 'pageviewed',
-                    event_label: 'Result - '+lokasi,
+                    event_label: 'Result - '+getCookie('lokasi_GGFIEURO'),
                     event_action: 'PageOpened'
                 })
                 router.push('/result');
@@ -280,7 +286,7 @@ export default function GenerateAmero() {
             </div>
         <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
           <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
-            <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+            <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
             {numProses1 && 

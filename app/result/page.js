@@ -22,11 +22,7 @@ export default function Result() {
     const [isNativeShare, setNativeShare] = useState(false);
     let componentRef = useRef();
 
-    const [scanQR, setScanQR] = useState(false);
-    const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
-    if(lokasi != undefined){
-        setScanQR(true)
-    }
+    const [scanQR, setScanQR] = useState(true);
 
     const { Canvas } = useQRCode();
 
@@ -43,7 +39,13 @@ export default function Result() {
         if (navigator.share) {
             setNativeShare(true);
         }
-    }, [imageResultAI, styleGender, linkQR])
+
+        if(getCookie('lokasi_GGFIEURO') != undefined){
+            setScanQR(true)
+        }else{
+        setScanQR(false)
+        }
+    }, [imageResultAI, styleGender, linkQR, scanQR])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -109,7 +111,7 @@ export default function Result() {
     const sharePhoto = async () => {
         gtag('event', 'Euro2024', {
             event_category: 'pageviewed',
-            event_label: 'Result - '+lokasi+' - '+styleGender,
+            event_label: 'Result - '+getCookie('lokasi_GGFIEURO')+' - '+styleGender,
             event_action: 'SharePhoto'
         })
 
@@ -188,7 +190,7 @@ export default function Result() {
             </div>
         <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
           <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
-            <Image src='/euro/scan-qr.png' width={327} height={222} alt='Zirolu' className='w-full' priority />
+            <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
             {/* DOWNLOAD & PRINT */}
