@@ -7,7 +7,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "AI Photo Booth - Pria Punya Selera | v2.1",
+  title: "AI Photo Booth - Pria Punya Selera | v2.2",
   description: "Giveaway Jersey EURO Original",
 };
 
