@@ -8,7 +8,7 @@ const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
   title: "AI Photo Booth - Pria Punya Selera",
-  description: "AI Photo Booth developed by zirolu",
+  description: "Giveaway Jersey EURO Original",
 };
 
 export default function RootLayout({ children }) {

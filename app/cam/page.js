@@ -168,7 +168,7 @@ export default function Cam() {
 
                     {!enabled && 
                     <div className='w-[62%] mx-auto absolute left-0 right-0 bottom-0 z-10'>
-                        <Image src='/frame-pose.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
+                        <Image src='/frame-pose2.png' width={426} height={461} alt='Zirolu' className='w-full' priority />
                     </div>
                     }
 
@@ -176,7 +176,7 @@ export default function Cam() {
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-base lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom</p> 
+                    <p className='block text-center text-base lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom <br></br> *Untuk hasil maksimal, kacamata dan topi silahkan&nbsp;tidak digunakan</p> 
                 }
             </div>
 
@@ -186,9 +186,9 @@ export default function Cam() {
                     <button className="relative mx-auto flex w-[100%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/euro/btn-take.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </button>
-                    <Link href='/' className="relative w-[100%] mx-auto flex justify-center items-center">
+                    {/* <Link href='/' className="relative w-[100%] mx-auto flex justify-center items-center">
                         <Image src='/btn-back.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
-                    </Link>
+                    </Link> */}
                 </div>
             }
             <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
@@ -196,8 +196,8 @@ export default function Cam() {
                     <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center" onClick={gtmGenerate}>
                         <Image src='/euro/btn-continue.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </Link>
-                    <button className="relative w-[70%] mx-auto flex justify-center items-center pt-2" onClick={retake}>
-                        <Image src='/btn-retake2.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
+                    <button className="relative w-[90%] mx-auto flex justify-center items-center pt-2" onClick={retake}>
+                        <Image src='/btn-retake3.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
             </div>
