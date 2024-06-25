@@ -538,6 +538,9 @@ body {
   /* background-image: url(../public/euro/thumb.jpg); */
   background-size: cover;
 }
+.videoLoading .react-player__shadow{
+  opacity: 0;
+}
 .videoLoading video{
   width: 100% !important;height: auto !important;
   display: flex;align-items: center;justify-content: center;
