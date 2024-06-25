@@ -296,7 +296,7 @@ export default function GenerateAmero() {
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div> */}
-                    <div className='animate-upDownCepet absolute px-4 py-2 w-[80%] text-base border-2 border-[#b1454a] text-center bg-loading text-[#fff] rounded-lg leading-tight z-10 w-auto bottom-4'>
+                    <div className='animate-upDownCepet absolute px-4 py-2 w-[80%] text-base border-2 border-[#b1454a] text-center bg-loading text-[#fff] rounded-lg leading-tight z-10 w-auto bottom-2'>
                         <p>{`Please wait`}</p>
                         <p>{`AI process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
