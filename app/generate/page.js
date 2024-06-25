@@ -296,11 +296,11 @@ export default function GenerateAmero() {
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
                         </div>
                     </div> */}
-                    {/* <div className='animate-upDownCepet relative p-3 py-5 w-[80%] text-xl border-2 border-[#b1454a] text-center bg-[#EAC46D] text-[#000] font-bold rounded-lg leading-tight'>
+                    <div className='animate-upDownCepet absolute px-4 py-2 w-[80%] text-base border-2 border-[#b1454a] text-center bg-loading text-[#fff] rounded-lg leading-tight z-10 w-auto bottom-4'>
                         <p>{`Please wait, loading...`}</p>
                         <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
-                    </div> */}
+                    </div>
 
                     {/* <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#EAC46D] text-[#000000] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
                         <code>

@@ -66,6 +66,12 @@ body {
   background-image: url(../public/euro/bg-page.jpg);
   background-size: cover;
 }
+.bg-loading{
+  background-image: url(../public/euro/loading.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 /* .font-paytone{
   font-family: var(--font-roboto_mono);
