@@ -116,62 +116,53 @@ export default function Result() {
         })
 
         if(isNativeShare){
+            // NEW WAY v2
+            const blob = await fetch(linkQR).then(r=>r.blob())
+            const data = {
+                files: [
+                  new File([blob], 'image.png', {
+                    type: blob.type,
+                  }),
+                ]
+              };
+              console.log(data)
+              try {
+                if (!(navigator.canShare(data))) {
+                  throw new Error('Can\'t share data.', data);
+                };
+                await navigator.share(data);
+              } catch (err) {
+                console.error(err.name, err.message);
+              }
             // NEW WAY
-            import('html2canvas').then(html2canvas => {
-                html2canvas.default(document.querySelector("#capture"), {scale:4}).then(async canvas => {
-                    const dataUrl = canvas.toDataURL();
-                    const blob = await (await fetch(dataUrl)).blob();
-                    console.log(blob)
-                    const filesArray = [
-                        new File(
-                            [blob],
-                            "Pria Punya Selera.png",
-                            {
-                                type: blob.type,
-                                lastModified: new Date().getTime()
-                            }
-                        )
-                    ];
-                    const shareData = {
-                        files: filesArray,
-                    };
-                    if (navigator.canShare(shareData)) {
-                        await navigator.share(shareData);
-                        try {
-                        await navigator.share(shareData);
-                        } catch (error) {
-                        console.log(error.message)
-                        }
-                    }
-                })
-            }).catch(e => {console("load failed")})
-
-
-            // const canvas = await html2canvas(document.querySelector("#capture"));
-            // const dataUrl = canvas.toDataURL();
-            // const blob = await (await fetch(dataUrl)).blob();
-            // console.log(blob)
-            // const filesArray = [
-            //     new File(
-            //         [blob],
-            //         "Pria Punya Selera.png",
-            //         {
-            //             type: blob.type,
-            //             lastModified: new Date().getTime()
+            // import('html2canvas').then(html2canvas => {
+            //     html2canvas.default(document.querySelector("#capture"), {scale:4}).then(async canvas => {
+            //         const dataUrl = canvas.toDataURL();
+            //         const blob = await (await fetch(dataUrl)).blob();
+            //         console.log(blob)
+            //         const filesArray = [
+            //             new File(
+            //                 [blob],
+            //                 "Pria Punya Selera.png",
+            //                 {
+            //                     type: blob.type,
+            //                     lastModified: new Date().getTime()
+            //                 }
+            //             )
+            //         ];
+            //         const shareData = {
+            //             files: filesArray,
+            //         };
+            //         if (navigator.canShare(shareData)) {
+            //             await navigator.share(shareData);
+            //             try {
+            //             await navigator.share(shareData);
+            //             } catch (error) {
+            //             console.log(error.message)
+            //             }
             //         }
-            //     )
-            // ];
-            // const shareData = {
-            //     files: filesArray,
-            // };
-            // if (navigator.canShare(shareData)) {
-            //     await navigator.share(shareData);
-            //     try {
-            //     await navigator.share(shareData);
-            //     } catch (error) {
-            //     console.log(error.message)
-            //     }
-            // }
+            //     })
+            // }).catch(e => {console("load failed")})
 
         }else{
             window.open(
@@ -234,7 +225,7 @@ export default function Result() {
                     </Link>
                 </div>
             </div>
-            <div className={`fixed bottom-0 left-0 w-full bg-[#530910]`} onClick={sharePhoto}>
+            <div className={`fixed bottom-0 left-0 w-full bg-[#530910] z-10`} onClick={sharePhoto}>
                 <div className="relative w-[full] mx-auto flex justify-center items-center flex-col">
                     <button className={`w-full relative mx-auto flex justify-center items-center`}>
                         <Image src='/euro/btn-share2.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
