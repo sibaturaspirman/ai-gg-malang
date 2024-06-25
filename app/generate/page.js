@@ -297,8 +297,8 @@ export default function GenerateAmero() {
                         </div>
                     </div> */}
                     <div className='animate-upDownCepet absolute px-4 py-2 w-[80%] text-base border-2 border-[#b1454a] text-center bg-loading text-[#fff] rounded-lg leading-tight z-10 w-auto bottom-4'>
-                        <p>{`Please wait, loading...`}</p>
-                        <p>{`Process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
+                        <p>{`Please wait`}</p>
+                        <p>{`AI process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
                         {error}
                     </div>
 
