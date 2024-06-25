@@ -328,7 +328,7 @@ export default function GenerateAmero() {
                         <div className='w-[90%] mx-auto'>
                             {/* GENDER FIX */}
                             <ul className='choose mod8'>
-                                {/* <li className='mb-0'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender1'
                                     type="radio"
@@ -365,7 +365,7 @@ export default function GenerateAmero() {
                                             priority
                                         />
                                     </label>
-                                </li> */}
+                                </li>
                                 <li className='mb-0'>
                                     <input
                                     id='choose_gender3'
@@ -518,7 +518,7 @@ export default function GenerateAmero() {
                                         />
                                     </label>
                                 </li>
-                                {/* <li className='mb-0'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender11'
                                     type="radio"
@@ -536,7 +536,7 @@ export default function GenerateAmero() {
                                             priority
                                         />
                                     </label>
-                                </li> */}
+                                </li>
                                 <li className='mb-0'>
                                     <input
                                     id='choose_gender12'
@@ -632,7 +632,7 @@ export default function GenerateAmero() {
                                         />
                                     </label>
                                 </li> */}
-                                {/* <li className='mb-0'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender17'
                                     type="radio"
@@ -650,7 +650,7 @@ export default function GenerateAmero() {
                                             priority
                                         />
                                     </label>
-                                </li> */}
+                                </li>
                                 <li className='mb-0'>
                                     <input
                                     id='choose_gender18'
@@ -689,7 +689,7 @@ export default function GenerateAmero() {
                                         />
                                     </label>
                                 </li> */}
-                                {/* <li className='mb-0'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender20'
                                     type="radio"
@@ -707,7 +707,7 @@ export default function GenerateAmero() {
                                             priority
                                         />
                                     </label>
-                                </li> */}
+                                </li>
                                 <li className='mb-0'>
                                     <input
                                     id='choose_gender21'
@@ -727,7 +727,7 @@ export default function GenerateAmero() {
                                         />
                                     </label>
                                 </li>
-                                {/* <li className='mb-0'>
+                                <li className='mb-0'>
                                     <input
                                     id='choose_gender22'
                                     type="radio"
@@ -745,7 +745,7 @@ export default function GenerateAmero() {
                                             priority
                                         />
                                     </label>
-                                </li> */}
+                                </li>
                                 {/* <li className='mb-0'>
                                     <input
                                     id='choose_gender23'
