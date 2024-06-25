@@ -229,7 +229,7 @@ export default function Result() {
                     <Image src='/euro/info-how.png' width={335} height={371} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className='relative w-full mt-2 mb-[6rem]'>
-                    <Link href='generate' className="relative w-[90%] mx-auto flex justify-center items-center pt-2">
+                    <Link href='/' className="relative w-[90%] mx-auto flex justify-center items-center pt-2">
                         <Image src='/btn-retake3.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>

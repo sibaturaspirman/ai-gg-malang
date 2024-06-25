@@ -71,7 +71,7 @@ export default function GenerateAmero() {
 
     const generateAI = () => {
         setNumProses1(true)
-        setPlayVideo(true)
+        // setPlayVideo(true)
         setTimeout(() => {
             generateImageSwap(styleGender, getRandomInt(1, 4))
         }, 100);
