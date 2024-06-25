@@ -120,7 +120,7 @@ export default function Result() {
             const blob = await fetch(linkQR).then(r=>r.blob())
             const data = {
                 files: [
-                  new File([blob], 'image.png', {
+                  new File([blob], 'Pria Punya Selera.png', {
                     type: blob.type,
                   }),
                 ]
