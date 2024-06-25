@@ -534,7 +534,7 @@ body {
   width: 100% !important;height: 100% !important;
   display: flex;align-items: center;justify-content: center;
   overflow: hidden;
-  background-color: #530910;
+  background-color: #000000;
   /* background-image: url(../public/euro/thumb.jpg); */
   background-size: cover;
 }
