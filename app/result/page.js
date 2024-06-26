@@ -23,6 +23,7 @@ export default function Result() {
     let componentRef = useRef();
 
     const [scanQR, setScanQR] = useState(true);
+    const [trouble, setTrouble] = useState(true);
 
     const { Canvas } = useQRCode();
 
@@ -42,10 +43,16 @@ export default function Result() {
 
         if(getCookie('lokasi_GGFIEURO') != undefined){
             setScanQR(true)
+
+            if(getCookie('lokasi_GGFIEURO') == 'ig'){
+                setTrouble(false)
+            }else{
+                setTrouble(true)
+            }
         }else{
         setScanQR(false)
         }
-    }, [imageResultAI, styleGender, linkQR, scanQR])
+    }, [imageResultAI, styleGender, linkQR, scanQR, trouble])
 
     const downloadImageAI = () => {
         // gtag('event', 'ClickButton', {
@@ -172,6 +179,11 @@ export default function Result() {
         }
     }
 
+    const copyLink = () => {
+        navigator.clipboard.writeText('https://priapunyaselera.ai/?lokasi=ig&qr=yes');
+        alert("Copied the link!");
+    }
+
     
 
     return (
@@ -202,24 +214,28 @@ export default function Result() {
 
             <div className={generateQR ? `opacity-0 pointer-events-none w-full` : 'w-full'}>
                 {imageResultAI && 
-                <div className='relative w-[65%] mx-auto flex justify-center items-center rounded-sm' id='capture'>
+                <div className='relative w-[65%] mx-auto flex justify-center items-center rounded-sm flex-col' id='capture'>
                     <div className='relative w-full'>
                         <Image src={imageResultAI}  width={544} height={892} alt='Zirolu' className='relative block w-full'></Image>
                     </div>
                 </div>
                 }
+                <p className={`block text-center text-sm mt-1 mb-3 text-white ${trouble ? 'hidden' : ''}`}>*<i>Hold</i> pada gambar untuk <i>save</i> hasil AI</p> 
                 {/* {loadingDownload && 
                     <div className='rrelative p-3 mt-5 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-base overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 } */}
-                <div className="relative w-[90%] mx-auto mt-4 mb-2">
+                <div className={`relative w-[90%] mx-auto mt-4 mb-2 ${trouble ? '' : 'hidden'}`}>
                     <Image src='/euro/info-giveaway.png' width={327} height={220} alt='Zirolu' className='w-full' priority />
+                </div>
+                <div className={`relative w-[90%] mx-auto mt-4 mb-2 ${trouble ? 'hidden' : ''}`} onClick={copyLink}>
+                    <Image src='/euro/info-giveaway2.png' width={327} height={220} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className="relative w-[90%] mx-auto mt-7 mb-2">
                     <Image src='/euro/info-how.png' width={335} height={371} alt='Zirolu' className='w-full' priority />
                 </div>
-                <div className='relative w-full mt-2 mb-[6rem]'>
+                <div className={`relative w-full mt-2  ${trouble ? ' mb-[9rem]' : ' mb-[9rem]'}`}>
                     <Link href='/' className="relative w-[90%] mx-auto flex justify-center items-center pt-2">
                         <Image src='/btn-retake3.png' width={433} height={81} alt='Zirolu' className='w-full' priority />
                     </Link>
@@ -231,6 +247,7 @@ export default function Result() {
                         <Image src='/euro/btn-share2.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </button>
                 </div>
+                <p className={`relative block text-center text-xs mt-[-.5rem] mb-3 text-white z-10 ${trouble ? 'hiddenx' : ''}`}>Ada kendala ketika <i>Share Photo?</i> <br></br> <i>Hold</i> pada gambar untuk <i>save</i> hasil AI</p> 
             </div>
         </main>
     );

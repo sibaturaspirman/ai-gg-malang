@@ -34,6 +34,7 @@ export default function Cam() {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
     const [scanQR, setScanQR] = useState(true);
+    const [trouble, setTrouble] = useState(true);
     // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
     // if(lokasi != undefined){
     //     setScanQR(true)
@@ -46,10 +47,16 @@ export default function Cam() {
     useEffect(() => {
         if(getCookie('lokasi_GGFIEURO') != undefined){
             setScanQR(true)
+
+            if(getCookie('lokasi_GGFIEURO') == 'ig'){
+                setTrouble(false)
+            }else{
+                setTrouble(true)
+            }
         }else{
           setScanQR(false)
         }
-    }, [scanQR]);
+    }, [scanQR, trouble]);
     useWebcam({ videoRef,previewRef});
 
     const captureVideo  = ({
@@ -142,6 +149,11 @@ export default function Cam() {
             })
         }, 0);
     }
+
+    const copyLink = () => {
+        navigator.clipboard.writeText('https://priapunyaselera.ai/?lokasi=ig&qr=yes');
+        alert("Copied the link!");
+    }
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col justify-center items-center py-5 px-5 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
 
@@ -150,6 +162,13 @@ export default function Cam() {
             <Image src='/euro/scan3.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
+
+        <div className={`fixed bottom-0 left-0 w-full flex items-end justify-center content-end z-50 ${trouble ? 'hidden' : ''}`} onClick={copyLink}>
+            <div className='relative w-[85%] mx-auto mb-1 flex justify-center items-center pointer-events-none'>
+            <Image src='/euro/trouble.png' width={654} height={131} alt='Zirolu' className='w-full' priority />
+            </div>
+        </div>
+        
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
             <Image src='/euro/logo-18.png' width={96} height={96} alt='Zirolu' className='w-full' priority />
             </div>
@@ -176,7 +195,7 @@ export default function Cam() {
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-base lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom <br></br> *Untuk hasil maksimal, kacamata dan topi silahkan&nbsp;tidak digunakan</p> 
+                    <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom <br></br> *Untuk hasil maksimal, kacamata dan<br></br>topi&nbsp;silahkan&nbsp;tidak digunakan</p> 
                 }
             </div>
 

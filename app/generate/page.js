@@ -40,6 +40,7 @@ export default function GenerateAmero() {
     const [playVideo, setPlayVideo] = useState(false);
 
     const [scanQR, setScanQR] = useState(true);
+    const [trouble, setTrouble] = useState(true);
     // const [lokasi, setLokasi] = useState(getCookie('lokasi_GGFIEURO'));
     // if(lokasi != undefined){
     //     setScanQR(true)
@@ -64,10 +65,16 @@ export default function GenerateAmero() {
 
         if(getCookie('lokasi_GGFIEURO') != undefined){
             setScanQR(true)
+
+            if(getCookie('lokasi_GGFIEURO') == 'ig'){
+                setTrouble(false)
+            }else{
+                setTrouble(true)
+            }
         }else{
           setScanQR(false)
         }
-    }, [imageFile, scanQR])
+    }, [imageFile, scanQR, trouble])
 
     const generateAI = () => {
         setNumProses1(true)
@@ -279,6 +286,11 @@ export default function GenerateAmero() {
         }, 100);
     }
 
+    const copyLink = () => {
+        navigator.clipboard.writeText('https://priapunyaselera.ai/?lokasi=ig&qr=yes');
+        alert("Copied the link!");
+    }
+
     return (
         <main className="flex fixed h-full w-full bg-page-euro overflow-auto flex-col py-3 px-3 lg:py-16 lg:px-20" onContextMenu={(e)=> e.preventDefault()}>
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>
@@ -310,7 +322,7 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
-                        <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url={['/euro/mission1-2.mp4']} light={<img src='https://priapunyaselera.ai/euro/thumb3.jpg' alt='Thumbnail' />} playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
+                        <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url={['/euro/loading-v1.mp4']} light={<img src='https://priapunyaselera.ai/euro/thumb3.jpg' alt='Thumbnail' />} playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
                         {/* <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url='https://www.youtube.com/watch?v=Yu3Flnvrin8' playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/> */}
 
                         
@@ -323,8 +335,8 @@ export default function GenerateAmero() {
                 <Image src='/title-select.png' width={686} height={112} alt='Zirolu' className='w-full' priority />
             </div> */}
             <div className={`relative w-full mt-0 ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
-                <div className='relative mt-0 mb-[5rem] w-full mx-auto'>
-                    <div className='relative w-full hiddenx'>
+                <div className={`relative mt-0 w-full mx-auto ${trouble ? 'mb-[5rem]' : 'mb-[7rem]'}`}>
+                    <div className='relative w-full hiddenx mb-5'>
                         <div className='relative w-[50%] mb-[-10px] mx-auto'>
                             <Image src='/euro/title-select.png' width={380} height={76} alt='Zirolu' className='w-full' priority />
                         </div>
@@ -790,8 +802,14 @@ export default function GenerateAmero() {
                             </ul>
                         </div>
                     </div>
+
+                    <div className={`relative bottom-0 left-0 w-full flex items-end justify-center content-end z-10 ${trouble ? 'hidden' : ''}`} onClick={copyLink}>
+                        <div className='relative w-[85%] mx-auto mb-1 flex justify-center items-center pointer-events-none'>
+                        <Image src='/euro/trouble.png' width={654} height={131} alt='Zirolu' className='w-full' priority />
+                        </div>
+                    </div>
                 </div>
-                <div className={`fixed bottom-0 left-0 mt-6 w-full bg-[#530910] ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
+                <div className={`fixed bottom-0 left-0 mt-6 w-full bg-[#530910] z-50 ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center`}>
                             <Image src='/euro/btn-generate.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
