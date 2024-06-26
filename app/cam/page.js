@@ -147,7 +147,7 @@ export default function Cam() {
 
         <div className={`fixed top-0 left-0 w-full h-full bg-black/80 flex items-center justify-center z-50 ${scanQR ? 'hidden' : ''}`}>
           <div className='relative w-[80%] mx-auto flex justify-center items-center pointer-events-none'>
-            <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
+            <Image src='/euro/scan3.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
             <div className='fixed w-[35px] mx-auto flex justify-center items-center pointer-events-none top-4 right-4'>

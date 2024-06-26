@@ -72,7 +72,7 @@ export default function Home() {
 
       <div className={`fixed top-0 left-0 w-full h-full flex items-end justify-center content-end z-50 ${scanQR ? 'hidden' : ''}`}>
         <div className='relative w-[85%] mx-auto mb-1 flex justify-center items-center pointer-events-none'>
-          <Image src='/euro/scan2.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
+          <Image src='/euro/scan3.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
         </div>
       </div>
 
@@ -86,7 +86,7 @@ export default function Home() {
         <Image src='/euro/pattern-bawah.png' width={562} height={178} alt='Zirolu' className='w-full' priority />
       </div>
       <div className="fixed w-full mx-auto pointer-events-none bottom-0 left-0 right-0 py-3 px-5">
-        <div className="relative w-[40%] flex justify-center items-center ml-auto mb-8">
+        <div className="relative w-[40%] flex justify-center items-center ml-auto mb-10">
           <div className='animate-upDown relative w-full mx-auto flex justify-center items-center pointer-events-none'>
             <Image src='/euro/jersey.png' width={396} height={452} alt='Zirolu' className='w-full' priority />
           </div>
