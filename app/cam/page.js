@@ -195,13 +195,13 @@ export default function Cam() {
                     <canvas ref={previewRef} width="512" height="512" className={`${enabled ? 'relative':'absolute opacity-0'} w-[67%] lg:w-full top-0 left-0 right-0 mx-auto pointer-events-nones border-2 border-[#ffffff] rounded-sm`}></canvas>
                 </div>
                 {!enabled && 
-                    <p className='block text-center text-sm lg:text-4xl mt-1 mb-3 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom <br></br> *Untuk hasil maksimal, kacamata dan<br></br>topi&nbsp;silahkan&nbsp;tidak digunakan</p> 
+                    <p className='block text-center text-sm lg:text-4xl mt-1 lg:mt-4 text-white'>*Ikuti garis pose dan tidak terlalu zoom <br></br> *Untuk hasil maksimal, kacamata dan<br></br>topi&nbsp;silahkan&nbsp;tidak digunakan</p> 
                 }
             </div>
 
 
             {!enabled && 
-                <div className="relative left-0 mt-4 w-full flex justify-center items-center flex-col">
+                <div className="relative left-0 mt-1 w-full flex justify-center items-center flex-col">
                     <button className="relative mx-auto flex w-[100%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/euro/btn-take.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
                     </button>
