@@ -310,7 +310,10 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
-                        <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url={['/euro/loading-v1.mp4']} light={<img src='https://priapunyaselera.ai/euro/thumb3.jpg' alt='Thumbnail' />} playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
+                        <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url={['/euro/mission1-2.mp4']} light={<img src='https://priapunyaselera.ai/euro/thumb3.jpg' alt='Thumbnail' />} playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
+                        {/* <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url='https://www.youtube.com/watch?v=Yu3Flnvrin8' playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/> */}
+
+                        
                     </div>
                 </div>
             }
