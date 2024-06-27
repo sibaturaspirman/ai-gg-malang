@@ -322,7 +322,7 @@ export default function GenerateAmero() {
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
                         <div className='videoLoading'>
-                            <video width="405" height="720" ref={videoRef} onEnded={nextResultLoading} poster="/euro/thumb.jpg" preload="none">
+                            <video width="405" height="720" ref={videoRef} onEnded={nextResultLoading} poster="/euro/thumb.jpg" preload="none" playsInline>
                                 <source src="/euro/loading-v1.mp4" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
