@@ -37,6 +37,7 @@ export default function GenerateAmero() {
     const [imageFile, setImageFile] = useState(null);
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
+    const [phone, setPhone] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
     const videoRef = useRef(null);
 
@@ -68,13 +69,15 @@ export default function GenerateAmero() {
 
             if(getCookie('lokasi_GGFIEURO') == 'ig'){
                 setTrouble(false)
+                setPhone('001')
             }else{
                 setTrouble(true)
+                setPhone('002')
             }
         }else{
           setScanQR(false)
         }
-    }, [imageFile, scanQR, trouble])
+    }, [imageFile, scanQR, trouble, phone])
 
     const generateAI = () => {
         videoRef.current.play();
@@ -195,7 +198,7 @@ export default function GenerateAmero() {
                 method: 'POST',
                 body: JSON.stringify({
                     name:getCookie('lokasi_GGFIEURO')+' - '+styleGender,
-                    phone:'000',
+                    phone:phone,
                     image:FACE_URL_RESULT
                 }),
                 headers: {
