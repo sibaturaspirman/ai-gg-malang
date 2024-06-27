@@ -221,17 +221,27 @@ export default function Result() {
                 </div>
                 }
                 <p className={`block text-center text-sm mt-1 mb-3 text-white ${trouble ? 'hidden' : ''}`}>*<i>Hold</i> pada gambar untuk <i>save</i> hasil AI</p> 
+
+                <p className={`relative block text-center text-sm mb-3 text-white z-10 ${trouble ? 'hidden' : ''}`}>Ada kendala ketika <i>Share Photo / Save?</i> <br></br> Buka link di browser smartphone kamu</p>
+                <div className={`relative bottom-0 left-0 w-full flex items-end justify-center content-end z-10 ${trouble ? 'hidden' : ''}`} onClick={copyLink}>
+                    <div className='relative w-[85%] mx-auto mb-1 flex justify-center items-center pointer-events-none'>
+                    <Image src='/euro/trouble.png' width={654} height={131} alt='Zirolu' className='w-full' priority />
+                    </div>
+                </div>
                 {/* {loadingDownload && 
                     <div className='rrelative p-3 mt-5 border-2 border-[#b1454a] text-center bg-[#CF1F29] text-[#fff] text-base overflow-auto no-scrollbar w-[70%] mx-auto rounded-lg'>
                         <p>Please wait, loading...</p>
                     </div>
                 } */}
-                <div className={`relative w-[90%] mx-auto mt-4 mb-2 ${trouble ? '' : 'hidden'}`}>
+                <div className={`relative w-[90%] mx-auto mt-4 mb-2`}>
+                    <Image src='/euro/info-giveaway.png' width={327} height={220} alt='Zirolu' className='w-full' priority />
+                </div>
+                {/* <div className={`relative w-[90%] mx-auto mt-4 mb-2 ${trouble ? '' : 'hidden'}`}>
                     <Image src='/euro/info-giveaway.png' width={327} height={220} alt='Zirolu' className='w-full' priority />
                 </div>
                 <div className={`relative w-[90%] mx-auto mt-4 mb-2 ${trouble ? 'hidden' : ''}`} onClick={copyLink}>
                     <Image src='/euro/info-giveaway2.png' width={327} height={220} alt='Zirolu' className='w-full' priority />
-                </div>
+                </div> */}
                 <div className="relative w-[90%] mx-auto mt-7 mb-2">
                     <Image src='/euro/info-how.png' width={335} height={371} alt='Zirolu' className='w-full' priority />
                 </div>
@@ -241,13 +251,16 @@ export default function Result() {
                     </Link>
                 </div>
             </div>
-            <div className={`fixed bottom-0 left-0 w-full bg-[#530910] z-10`} onClick={sharePhoto}>
+            <div className={`fixed bottom-0 left-0 w-full bg-[#530910] z-10`}>
                 <div className="relative w-[full] mx-auto flex justify-center items-center flex-col">
-                    <button className={`w-full relative mx-auto flex justify-center items-center`}>
-                        <Image src='/euro/btn-share2.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
+                    <button className={`w-full relative mx-auto flex justify-center items-center p-4 px-6`} onClick={sharePhoto}>
+                        <Image src='/euro/btn-share3.png' width={654} height={88} alt='Zirolu' className='w-full' priority />
                     </button>
+                    <Link href={linkQR} target="_blank" className={`w-full relative mx-auto flex justify-center items-center p-4 pt-0 px-6`}>
+                        <Image src='/euro/btn-download.png' width={654} height={88} alt='Zirolu' className='w-full' priority />
+                    </Link>
                 </div>
-                <p className={`relative block text-center text-xs mt-[-.5rem] mb-3 text-white z-10 ${trouble ? 'hiddenx' : ''}`}>Ada kendala ketika <i>Share Photo?</i> <br></br> <i>Hold</i> pada gambar untuk <i>save</i> hasil AI</p> 
+                {/* <p className={`relative block text-center text-xs mt-[-.5rem] mb-3 text-white z-10 ${trouble ? 'hiddenx' : ''}`}>Ada kendala ketika <i>Share Photo?</i> <br></br> <i>Hold</i> pada gambar untuk <i>save</i> hasil AI</p>  */}
             </div>
         </main>
     );
