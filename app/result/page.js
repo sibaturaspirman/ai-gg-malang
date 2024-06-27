@@ -54,67 +54,6 @@ export default function Result() {
         }
     }, [imageResultAI, styleGender, linkQR, scanQR, trouble])
 
-    const downloadImageAI = () => {
-        // gtag('event', 'ClickButton', {
-        //     event_category: 'Button',
-        //     event_label: 'ResultPage - '+payload.stasiunName,
-        //     event_action: 'CollectYourPhoto'
-        // })
-        
-        // import('html2canvas').then(html2canvas => {
-        //     html2canvas.default(document.querySelector("#capture"), {scale:4}).then(canvas => 
-        //         uploadImage(canvas)
-        //     )
-        // }).catch(e => {console("load failed")})
-        setGenerateQR('true')
-    }
-    const uploadImage = async (canvas) => {
-        setLoadingDownload('≈')
-
-        canvas.toBlob(async function(blob) {
-            let bodyFormData = new FormData();
-            bodyFormData.append("name", payload.name+' - '+styleGender);
-            bodyFormData.append("phone", payload.phone);
-            bodyFormData.append("type", 'ggif');
-            bodyFormData.append("fromPhone", true);
-            bodyFormData.append("file", blob, payload.name+'-ai-zirolu.png');
-          
-            const options = {
-                method: 'POST',
-                body: bodyFormData,
-                headers: {
-                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
-                    'Accept': 'application/json',
-                }
-            };
-            
-            await fetch('https://api.priapunyaselera.ai/v1/photoai', options)
-                .then(response => response.json())
-                .then(response => {
-                    // console.log(response)
-                    // console.log(response.file)
-                    setLinkQR(response.file)
-                    setGenerateQR('true')
-                    setLoadingDownload(null)
-                })
-                .catch(err => {
-                    if (typeof localStorage !== 'undefined') {
-                        const item = localStorage.getItem('faceURLResult')
-                        setLinkQR(item)
-                        setGenerateQR('true')
-                        setLoadingDownload(null)
-                    }
-                });
-        });
-    }
-    const backHome = () => {
-        gtag('event', 'ClickButton', {
-            event_category: 'Button',
-            event_label: 'ResultPage - '+payload.stasiunName,
-            event_action: 'BackToHome'
-        })
-    }
-
     const sharePhoto = async () => {
         gtag('event', 'Euro2024', {
             event_category: 'pageviewed',
@@ -132,14 +71,14 @@ export default function Result() {
                   }),
                 ]
               };
-              console.log(data)
+            //   console.log(data)
               try {
                 if (!(navigator.canShare(data))) {
                   throw new Error('Can\'t share data.', data);
                 };
                 await navigator.share(data);
               } catch (err) {
-                console.error(err.name, err.message);
+                // console.error(err.name, err.message);
               }
             // NEW WAY
             // import('html2canvas').then(html2canvas => {

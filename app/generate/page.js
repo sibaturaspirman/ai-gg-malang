@@ -51,7 +51,7 @@ export default function GenerateAmero() {
     const [numProses1, setNumProses1] = useState(null);
     // Result state
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(true);
     const [result, setResult] = useState(null);
     const [resultFaceSwap, setResultFaceSwap] = useState(null);
     const [logs, setLogs] = useState([]);
@@ -120,7 +120,7 @@ export default function GenerateAmero() {
 
     const reset = () => {
       setLoading(false);
-      setError(null);
+      setError(true);
       setResult(null);
       setResultFaceSwap(null);
       setLogs([]);
@@ -128,7 +128,7 @@ export default function GenerateAmero() {
     };
     const reset2 = () => {
       setLoading(false);
-      setError(null);
+      setError(true);
       // setLogs([]);
       setElapsedTime(0);
     };
@@ -147,7 +147,7 @@ export default function GenerateAmero() {
         // MALAM
         const urlGambar = 'https://ai-gg-malang-git-master-asep-irmans-projects.vercel.app/euro/style/'+gender+'-'+number+'.jpg'
 
-        console.log(urlGambar)
+        // console.log(urlGambar)
         setNumProses(2)
         reset2();
         // @snippet:start("client.queue.subscribe")
@@ -191,37 +191,36 @@ export default function GenerateAmero() {
                 localStorage.setItem("styleGender", styleGender)
             }
 
-            // const options = {
-            //     method: 'POST',
-            //     body: JSON.stringify({
-            //         name:payload.name+' - '+styleGender,
-            //         phone:payload.phone,
-            //         type:'ggif',
-            //         fromPhone:true,
-            //         imgUrl:FACE_URL_RESULT
-            //     }),
-            //     headers: {
-            //         'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
-            //         'Accept': 'application/json',
-            //         'Content-Type': 'application/json'
-            //     }
-            // };
+            const options = {
+                method: 'POST',
+                body: JSON.stringify({
+                    name:getCookie('lokasi_GGFIEURO')+' - '+styleGender,
+                    phone:'000',
+                    image:FACE_URL_RESULT
+                }),
+                headers: {
+                    'Authorization': '89d183b7-ce47-4ceb-8676-1c2378f5be19:wZgrzLLKXOIjgACeJWH34iwOGqVZQmVg',
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            };
 
-            // await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
-            //     .then(response => response.json())
-            //     .then(response => {
-            //         // console.log(response)
-            //         console.log(response.file)
-            //         // setLinkQR(response.file)
-            //         // setGenerateQR('true')
-            //         // setLoadingDownload(null)
-            //         setTimeout(() => {
-            //             router.push('/result');
-            //         }, 10);
-            //     })
-            //     .catch(err => {
-            //         console.log(err)
-            //     });
+            await fetch('https://api.priapunyaselera.ai/v1/euro/link', options)
+                .then(response => response.json())
+                .then(response => {
+                    // console.log(response)
+                    // console.log(response.file)
+                    // setLinkQR(response.file)
+                    // setGenerateQR('true')
+                    // setLoadingDownload(null)
+                    // setTimeout(() => {
+                    //     router.push('/result');
+                    // }, 10);
+                    nextResultLoading2()
+                })
+                .catch(err => {
+                    // console.log(err)
+                });
 
             // setTimeout(() => {
                 // gtag('event', 'Euro2024', {
@@ -230,11 +229,13 @@ export default function GenerateAmero() {
                 //     event_action: 'PageOpened'
                 // })
                 // router.push('/result');
-                nextResultLoading2()
+                // nextResultLoading2()
             // }, 10);
         })
         } catch (error) {
-            setError(error);
+            // setError(error);
+            setError(false);
+            // console.log(error)
         } finally {
             setLoading(false);
             setElapsedTime(Date.now() - start);
@@ -243,14 +244,14 @@ export default function GenerateAmero() {
     };
 
     const nextResultLoading = () => {
-        console.log("video Selessai")
+        // console.log("video Selessai")
         videoLoadingSelesai = true
         videoLoadingSelesai2 = true
 
-        console.log(videoLoadingSelesai)
-        console.log(videoLoadingSelesai2)
-        console.log(generateLoadingSelesai)
-        console.log(generateLoadingSelesai2)
+        // console.log(videoLoadingSelesai)
+        // console.log(videoLoadingSelesai2)
+        // console.log(generateLoadingSelesai)
+        // console.log(generateLoadingSelesai2)
 
         setTimeout(() => {
             if(videoLoadingSelesai && generateLoadingSelesai){
@@ -265,14 +266,14 @@ export default function GenerateAmero() {
     }
 
     const nextResultLoading2 = () => {
-        console.log("Generate Selessai")
+        // console.log("Generate Selessai")
         generateLoadingSelesai = true
         generateLoadingSelesai2 = true
 
-        console.log(videoLoadingSelesai)
-        console.log(videoLoadingSelesai2)
-        console.log(generateLoadingSelesai)
-        console.log(generateLoadingSelesai2)
+        // console.log(videoLoadingSelesai)
+        // console.log(videoLoadingSelesai2)
+        // console.log(generateLoadingSelesai)
+        // console.log(generateLoadingSelesai2)
 
         setTimeout(() => {
             if(videoLoadingSelesai2 && generateLoadingSelesai2){
@@ -301,6 +302,13 @@ export default function GenerateAmero() {
             <Image src='/euro/scan3.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
+
+        <div className={`fixed top-0 left-0 w-full h-full bg-page-euro flex items-center justify-center z-50 ${error ? 'hidden' : ''}`}>
+          <a href='/' className='relative w-[80%] mx-auto flex justify-center items-center'>
+            <Image src='/euro/error.png' width={327} height={221} alt='Zirolu' className='w-full' priority />
+          </a>
+        </div>
+
             <div className={`fixed w-full h-full top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col ${numProses1 ? '' : 'opacity-0 pointer-events-none'}`}>
                     {/* <div className='relative w-[60%] overflow-hidden'>
                         <div className='relative w-full'>
@@ -309,8 +317,7 @@ export default function GenerateAmero() {
                     </div> */}
                     <div className='animate-upDownCepet absolute px-4 py-2 w-[80%] text-base border-2 border-[#b1454a] text-center bg-loading text-[#fff] rounded-lg leading-tight z-10 w-auto bottom-2'>
                         <p>{`Please wait`}</p>
-                        <p>{`AI process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`}</p>
-                        {error}
+                        <p>{`AI process : ${(elapsedTime / 1000).toFixed(2)} seconds (${numProses} of 2)`} {error}</p>
                     </div>
 
                     {/* <pre className='relative p-5 mt-14 border-2 border-[#b1454a] text-left bg-[#EAC46D] text-[#000000] text-3xl overflow-auto no-scrollbar h-[250px] w-[60%] mx-auto rounded-lg hidden'>
