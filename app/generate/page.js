@@ -157,23 +157,23 @@ export default function GenerateAmero() {
         const result = await fal.subscribe(
             'fal-ai/face-swap',
             {
-            input: {
-                // base_image_url: URL_RESULT,
-                // swap_image_url: '/amero/base/'+character
-                base_image_url: urlGambar,
-                swap_image_url: imageFile
-            },
-            pollInterval: 5000, // Default is 1000 (every 1s)
-            logs: true,
-            onQueueUpdate(update) {
-                setElapsedTime(Date.now() - start);
-                if (
-                update.status === 'IN_PROGRESS' ||
-                update.status === 'COMPLETED'
-                ) {
-                setLogs((update.logs || []).map((log) => log.message));
-                }
-            },
+                input: {
+                    // base_image_url: URL_RESULT,
+                    // swap_image_url: '/amero/base/'+character
+                    base_image_url: urlGambar,
+                    swap_image_url: imageFile
+                },
+                pollInterval: 5000, // Default is 1000 (every 1s)
+                logs: true,
+                onQueueUpdate(update) {
+                    setElapsedTime(Date.now() - start);
+                    if (
+                        update.status === 'IN_PROGRESS' ||
+                        update.status === 'COMPLETED'
+                    ) {
+                        setLogs((update.logs || []).map((log) => log.message));
+                    }
+                },
             }
         );
         setResultFaceSwap(result);
