@@ -38,6 +38,7 @@ export default function GenerateAmero() {
     const [styleGender, setStyleGender] = useState(null);
     const [character, setCharacter] = useState(null);
     const [playVideo, setPlayVideo] = useState(false);
+    const videoRef = useRef(null);
 
     const [scanQR, setScanQR] = useState(true);
     const [trouble, setTrouble] = useState(true);
@@ -45,7 +46,7 @@ export default function GenerateAmero() {
     // if(lokasi != undefined){
     //     setScanQR(true)
     // }
-    
+
     const [numProses, setNumProses] = useState(0);
     const [numProses1, setNumProses1] = useState(null);
     // Result state
@@ -57,7 +58,6 @@ export default function GenerateAmero() {
     const [elapsedTime, setElapsedTime] = useState(0);
     // @snippet:end
     useEffect(() => {
-        // Perform localStorage action
         if (typeof localStorage !== 'undefined') {
             const item = localStorage.getItem('faceImage')
             setImageFile(item)
@@ -77,8 +77,8 @@ export default function GenerateAmero() {
     }, [imageFile, scanQR, trouble])
 
     const generateAI = () => {
+        videoRef.current.play();
         setNumProses1(true)
-        // setPlayVideo(true)
         setTimeout(() => {
             generateImageSwap(styleGender, getRandomInt(1, 4))
         }, 100);
@@ -106,7 +106,7 @@ export default function GenerateAmero() {
       if (result.image) {
         return result.image;
       }
-      
+
     }, [result]);
     const imageFaceSwap = useMemo(() => {
       if (!resultFaceSwap) {
@@ -117,7 +117,7 @@ export default function GenerateAmero() {
       }
       return null;
     }, [resultFaceSwap]);
-    
+
     const reset = () => {
       setLoading(false);
       setError(null);
@@ -190,7 +190,7 @@ export default function GenerateAmero() {
                 localStorage.setItem("faceURLResult", FACE_URL_RESULT)
                 localStorage.setItem("styleGender", styleGender)
             }
-          
+
             // const options = {
             //     method: 'POST',
             //     body: JSON.stringify({
@@ -206,7 +206,7 @@ export default function GenerateAmero() {
             //         'Content-Type': 'application/json'
             //     }
             // };
-            
+
             // await fetch('https://api.priapunyaselera.ai/v1/photoai/link', options)
             //     .then(response => response.json())
             //     .then(response => {
@@ -222,7 +222,7 @@ export default function GenerateAmero() {
             //     .catch(err => {
             //         console.log(err)
             //     });
-        
+
             // setTimeout(() => {
                 // gtag('event', 'Euro2024', {
                 //     event_category: 'pageviewed',
@@ -301,8 +301,7 @@ export default function GenerateAmero() {
             <Image src='/euro/scan3.png' width={327} height={113} alt='Zirolu' className='w-full' priority />
           </div>
         </div>
-            {numProses1 && 
-                <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col'>
+            <div className={`fixed w-full h-full top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col ${numProses1 ? '' : 'opacity-0 pointer-events-none'}`}>
                     {/* <div className='relative w-[60%] overflow-hidden'>
                         <div className='relative w-full'>
                             <Image src='/title-front.png' width={773} height={158} alt='Zirolu' className='w-full' priority />
@@ -322,13 +321,16 @@ export default function GenerateAmero() {
                         Loading model..<br></br>
                     </pre> */}
                     <div className='w-full flex items-center justify-center'>
-                        <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url={['/euro/loading-v1.mp4']} light={<img src='https://priapunyaselera.ai/euro/thumb3.jpg' alt='Thumbnail' />} playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/>
-                        {/* <ReactPlayer config={{ file: { attributes: { playsInline: true, }, }, }} url='https://www.youtube.com/watch?v=Yu3Flnvrin8' playing className='videoLoading' width={405} height={720} onEnded={nextResultLoading}/> */}
+                        <div className='videoLoading'>
+                            <video width="405" height="720" ref={videoRef} onEnded={nextResultLoading} poster="/euro/thumb.jpg" preload="none">
+                                <source src="/euro/loading-v1.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
 
-                        
+
                     </div>
                 </div>
-            }
             {/* LOADING */}
             {/* PILIH STYLE */}
             {/* <div className={`fixed top-[10rem] w-[50%] ${numProses1 ? 'opacity-0 pointer-events-none' : ''}`}>
@@ -809,7 +811,7 @@ export default function GenerateAmero() {
                         </div>
                     </div>
                 </div>
-                <div className={`fixed bottom-0 left-0 mt-6 w-full bg-[#530910] z-50 ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
+                <div className={`fixed bottom-0 left-0 mt-6 w-full bg-[#530910] z-50 ${!styleGender ? 'hidden' : ''}`}  onClick={generateAI}>
                     <div className="relative w-[80%] mx-auto flex justify-center items-center flex-col">
                         <button className={`w-full relative mx-auto flex justify-center items-center`}>
                             <Image src='/euro/btn-generate.png' width={359} height={88} alt='Zirolu' className='w-full' priority />
