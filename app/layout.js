@@ -9,6 +9,9 @@ const outfit = Outfit({ subsets: ["latin"] });
 export const metadata = {
   title: "AI Photo Booth - Pria Punya Selera | v2.3",
   description: "Giveaway Jersey EURO Original",
+  openGraph: {
+    images: ['/og.jpg'],
+  },
 };
 
 export default function RootLayout({ children }) {
