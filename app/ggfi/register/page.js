@@ -37,7 +37,7 @@ export default function Register() {
 
     const handleSubmit = () => {
         setCookie('phone', payload.phone);
-        router.push('/cam');
+        router.push('/ggfi/cam');
         // setTimeout(() => {
         //     router.push('/cam');
         // }, 250);
@@ -77,7 +77,7 @@ export default function Register() {
                 <button className={`w-full relative mx-auto flex justify-center items-center ${payload.phone ? '' : 'pointer-events-none opacity-10'}`} onClick={handleSubmit}>
                     <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                 </button>
-                <Link href='/' className="relative w-full mx-auto flex justify-center items-center pt-6">
+                <Link href='/ggfi' className="relative w-full mx-auto flex justify-center items-center pt-6">
                     <Image src='/btn-back.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                 </Link>
             </div>

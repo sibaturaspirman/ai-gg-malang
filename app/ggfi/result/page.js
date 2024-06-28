@@ -202,7 +202,7 @@ export default function Result() {
                                 />
                                 </div>  */}
 
-                                <Link href='/generate' className="relative w-full mx-auto flex justify-center items-center pl-4">
+                                <Link href='/ggfi/generate' className="relative w-full mx-auto flex justify-center items-center pl-4">
                                     <Image src='/btn-retake.png' width={515} height={164} alt='Zirolu' className='w-full' priority />
                                 </Link>
                             </div>

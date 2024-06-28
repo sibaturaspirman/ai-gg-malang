@@ -209,7 +209,7 @@ export default function GenerateAmero() {
                     // setGenerateQR('true')
                     // setLoadingDownload(null)
                     setTimeout(() => {
-                        router.push('/result');
+                        router.push('/ggfi/result');
                     }, 10);
                 })
                 .catch(err => {
@@ -336,7 +336,7 @@ export default function GenerateAmero() {
                         <button className={`w-full relative mx-auto flex justify-center items-center ${!styleGender ? 'hidden' : ''}`} onClick={generateAI}>
                             <Image src='/btn-generate.png' width={830} height={192} alt='Zirolu' className='w-full' priority />
                         </button>
-                        <Link href='/' className="relative w-full mx-auto flex justify-center items-center">
+                        <Link href='/ggfi' className="relative w-full mx-auto flex justify-center items-center">
                             <Image src='/btn-back.png' width={772} height={135} alt='Zirolu' className='w-full' priority />
                         </Link>
                     </div>

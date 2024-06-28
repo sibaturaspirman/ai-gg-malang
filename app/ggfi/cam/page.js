@@ -149,14 +149,14 @@ export default function Cam() {
                     <button className="relative mx-auto flex w-[70%] justify-center items-center" onClick={captureVideo}>
                         <Image src='/btn-capture.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </button>
-                    <Link href='/' className="relative w-[70%] mx-auto flex justify-center items-center">
+                    <Link href='/ggfi' className="relative w-[70%] mx-auto flex justify-center items-center">
                         <Image src='/btn-back.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
                 </div>
             }
             <div className={`relative left-0 w-full mt-4 ${!enabled ? 'hidden' : ''}`}>
                 <div className="relative w-[70%] mx-auto flex justify-center items-center flex-col">
-                    <Link href='/generate' className="w-full relative mx-auto flex justify-center items-center">
+                    <Link href='/ggfi/generate' className="w-full relative mx-auto flex justify-center items-center">
                         <Image src='/btn-next.png' width={867} height={163} alt='Zirolu' className='w-full' priority />
                     </Link>
                     <button className="relative w-full mx-auto flex justify-center items-center pt-2" onClick={retake}>
